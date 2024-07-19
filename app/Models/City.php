@@ -32,4 +32,14 @@ class City extends Model
     {
         return $this->hasMany(SubDistrict::class);
     }
+
+    /**
+     * Get all of the schools for the City
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function schools(): HasMany
+    {
+        return $this->hasMany(School::class);
+    }
 }

@@ -21,4 +21,14 @@ class Province extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    /**
+     * Get all of the schools for the Province
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function schools(): HasMany
+    {
+        return $this->hasMany(School::class);
+    }
 }
