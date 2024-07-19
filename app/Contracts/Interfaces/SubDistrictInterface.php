@@ -4,7 +4,7 @@ namespace App\Contracts\Interfaces;
 
 use App\Contracts\Interfaces\Eloquent\WhereInterface;
 
-interface CityInterface extends WhereInterface
+interface SubDistrictInterface extends WhereInterface
 {
     //
 }
