@@ -24,7 +24,7 @@ class RfidController extends Controller
         $rfids = $this->rfid->search($request);
         $usedRfids = $this->rfid->used($request);
         $notUsedRfids = $this->rfid->notUsed($request);
-        return view('', compact('rfids', 'usedRfids', 'notUsedRfids'));
+        return view('admin.pages.rfid.index', compact('rfids', 'usedRfids', 'notUsedRfids'));
     }
 
     /**

@@ -78,10 +78,13 @@
                     </form>
                 </div>
                 <div class="col-lg-6 mb-3 d-flex justify-content-end">
-                    <form action="{{ route('rfid-admin.store') }}" method="post" class="d-flex align-items-center gap-3">
+                    <form action="{{ route('rfid.store') }}" method="post" class="d-flex align-items-center gap-3">
                         <span class="">Tambah RFID: </span>
                         @csrf
-                        <input type="text" name="rfid" class="form-control w-auto" id="rfid-input">
+                        <input type="text" name="rfid" class="form-control w-auto rfid-input" id="rfid-input">
+                        @error('rfid')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                         <button type="submit" class="btn btn-rounded btn-primary">Tambah</button>
                     </form>
                 </div>
@@ -100,13 +103,8 @@
                         </thead>
                         <tbody>
                             @forelse ($rfids as $rfid)
-                            @php
-                            if ($rfid->status->value == 'used') {
-                            $hasRfid = App\Models\ModelHasRfid::where('rfid', $rfid->rfid)->first();
-                            }
-                            @endphp
                             <tr>
-                                <td>{{ $rfid->status->value == 'used' && $hasRfid ? $hasRfid->model->user->name : '-' }}
+                                <td>belum difetch
                                 </td>
                                 <td>{{ $rfid->rfid }}</td>
                                 <td>
@@ -168,10 +166,13 @@
                     </form>
                 </div>
                 <div class="col-lg-6 mb-3 d-flex justify-content-end">
-                    <form action="{{ route('rfid-admin.store') }}" method="post" class="d-flex align-items-center gap-3">
+                    <form action="{{ route('rfid.store') }}" method="post" class="d-flex align-items-center gap-3">
                         <span class="">Tambah RFID: </span>
                         @csrf
-                        <input type="text" name="rfid" class="form-control w-auto" id="rfid-input">
+                        <input type="text" name="rfid" class="form-control w-auto rfid-input" id="rfid-input">
+                        @error('rfid')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                         <button type="submit" class="btn btn-rounded btn-primary">Tambah</button>
                     </form>
                 </div>
@@ -189,13 +190,8 @@
                         </thead>
                         <tbody>
                             @forelse ($usedRfids as $rfid)
-                            @php
-                            if ($rfid->status->value == 'used') {
-                            $hasRfid = App\Models\ModelHasRfid::where('rfid', $rfid->rfid)->first();
-                            }
-                            @endphp
                             <tr>
-                                <td>{{ $hasRfid ? $hasRfid->model->user->name : '-' }}</td>
+                                <td>Belum difetch</td>
                                 <td>{{ $rfid->rfid }}</td>
                                 <td>
                                     <span class="mb-1 badge px-4 font-medium bg-light-{{ $rfid->status->color() }} text-{{ $rfid->status->color() }}">{{ $rfid->status->label() }}</span>
@@ -236,10 +232,13 @@
                     </form>
                 </div>
                 <div class="col-lg-6 mb-3 d-flex justify-content-end">
-                    <form action="{{ route('rfid-admin.store') }}" method="post" class="d-flex align-items-center gap-3">
+                    <form action="{{ route('rfid.store') }}" method="post" class="d-flex align-items-center gap-3">
                         <span class="">Tambah RFID: </span>
                         @csrf
-                        <input type="text" name="rfid" class="form-control w-auto" id="rfid-input">
+                        <input type="text" name="rfid" class="form-control w-auto rfid-input" id="rfid-input">
+                        @error('rfid')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                         <button type="submit" class="btn btn-rounded btn-primary">Tambah</button>
                     </form>
                 </div>
@@ -285,34 +284,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal-create" tabindex="-1" aria-labelledby="tambahRfid" aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="{{ route('rfid-admin.store') }}" method="post">
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahRfid">Tambah RFID</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <span class="text-dark fw-semibold me-2">RFID :</span>
-                    </div>
-                    <div class="mb-3">
-                        Anda juga bisa melakukan tab ke rfid reader untuk menginputkan rfid
-                    </div>
-                    <div>
-                        <input type="text" name="rfid" class="form-control">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-rounded btn-light-danger text-danger" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 <x-delete-modal-component />
 @endsection
 @section('script')
@@ -321,12 +292,12 @@
 
         $('.btn-delete').click(function() {
             var id = $(this).data('id');
-            $('#form-delete').attr('action', '/admin/rfid/' + id);
+            $('#form-delete').attr('action', '/rfid/' + id);
             $('#modal-delete').modal('show');
         });
 
         $(document).ready(function() {
-            $('#rfid-input').focus();
+            $('.rfid-input').focus();
         });
 
         function resetActiveBtn() {

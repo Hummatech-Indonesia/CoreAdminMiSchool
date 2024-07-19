@@ -22,7 +22,7 @@ class StoreRfidRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'rfid' => 'required|unique:rfids,id,except,id'
+            'rfid' => 'required|unique:rfids,rfid'
         ];
     }
 
