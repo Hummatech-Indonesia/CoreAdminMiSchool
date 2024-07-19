@@ -56,9 +56,7 @@
                                         height="80" alt="" />
                                     <div class="ms-3">
                                         <h5 class="mb-1 fs-3 username">{{ auth()->user()->name }}</h5>
-                                        @foreach (auth()->user()->getRoleNames() as $role)
-                                            <span class="mb-1 d-block text-dark role">{{ $role }}</span>
-                                        @endforeach
+                                        <span class="mb-1 d-block text-dark role">Humma Technology</span>
                                         <p class="mb-0 d-flex text-dark align-items-center gap-2 email">
                                             <i class="ti ti-mail fs-4"></i>
                                             {{ auth()->user()->email }}

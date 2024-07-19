@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SubDistrictController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +24,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('school', SchoolController::class);
+Route::patch('school/{school}/enable', [SchoolController::class, 'active'])->name('school.active');
+Route::patch('school/{school}/disable', [SchoolController::class, 'nonactive'])->name('school.nonactive');
+Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
+Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');

@@ -35,7 +35,7 @@ class SchoolController extends Controller
         $schools = $this->school->search($request)->paginate(10);
         $activeSchools = $this->school->where('1', $request);
         $nonActiveSchools = $this->school->where('0', $request);
-        return view('', compact('schools', 'activeSchools', 'nonActiveSchools'));
+        return view('admin.pages.school.index', compact('schools', 'activeSchools', 'nonActiveSchools'));
     }
 
     /**
@@ -46,7 +46,7 @@ class SchoolController extends Controller
         $provinces = $this->province->get();
         $cities = $this->city->get();
         $subdistricts = $this->subdistrict->get();
-        return view('', compact('provinces', 'cities', 'subdistricts'));
+        return view('admin.pages.school.create', compact('provinces', 'cities', 'subdistricts'));
     }
 
     /**
@@ -56,7 +56,7 @@ class SchoolController extends Controller
     {
         $data = $this->service->store($request);
         $this->school->store($data);
-        return to_route('')->with('success', 'Berhasil menambahkan sekolah');
+        return to_route('school.index')->with('success', 'Berhasil menambahkan sekolah');
     }
 
     /**
@@ -65,7 +65,7 @@ class SchoolController extends Controller
     public function show($slug)
     {
         $school = $this->school->showWithSlug($slug);
-        return view('', compact('school'));
+        return view('admin.pages.school.detail', compact('school'));
     }
 
     /**
@@ -87,21 +87,9 @@ class SchoolController extends Controller
     {
         $data = $this->service->update($school, $request);
         $this->school->update($school->id, $data);
-        return to_route('settings-information.index')->with('success', 'Berhasil memperbarui sekolah');
+        return to_route('school.index')->with('success', 'Berhasil memperbarui sekolah');
     }
-
-    public function nonactive(School $school)
-    {
-        $this->school->update($school->id, ['active' => 0]);
-        return redirect()->back()->with('success', 'Sekolah berhasil dinonaktifkan');
-    }
-
-    public function active(School $school)
-    {
-        $this->school->update($school->id, ['active' => 1]);
-        return redirect()->back()->with('success', 'Sekolah berhasil diaktifkan');
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      */
@@ -109,6 +97,24 @@ class SchoolController extends Controller
     {
         $this->service->delete($school);
         $this->school->delete($school->id);
-        return to_route('')->with('success', 'Berhasil menghapus sekolah');
+        return to_route('school.index')->with('success', 'Berhasil menghapus sekolah');
+    }
+
+    /**
+     * Fungsi untuk mengubah sekolah menjadi tidak aktif.
+     */
+    public function nonactive(School $school)
+    {
+        $this->school->update($school->id, ['active' => 0]);
+        return redirect()->back()->with('success', 'Sekolah berhasil dinonaktifkan');
+    }
+
+    /**
+     * Fungsi untuk mengubah sekolah menjadi aktif.
+     */
+    public function active(School $school)
+    {
+        $this->school->update($school->id, ['active' => 1]);
+        return redirect()->back()->with('success', 'Sekolah berhasil diaktifkan');
     }
 }

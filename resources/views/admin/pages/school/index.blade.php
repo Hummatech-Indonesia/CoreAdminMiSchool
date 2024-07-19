@@ -16,7 +16,7 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" data-bs-toggle="tab" href="#nonactive" role="tab" aria-selected="false">
-                        <span>Non Aktif</span>
+                        <span>Tidak Aktif</span>
                     </a>
                 </li>
             </ul>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-auto mb-3">
-                    <a href="{{ route('school-admin.create') }}" type="button"
+                    <a href="{{ route('school.create') }}" type="button"
                         class="btn mb-1 waves-effect waves-light btn-rounded btn-primary">Tambah</a>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                                         <div class="d-flex justify-content-center align-items-center mb-3"
                                             style="height: 130px;">
                                             <img class="card-img-top img-responsive" style="max-height: 100%; width: auto"
-                                                src="{{ asset('storage/' . $school->image) }}" alt="Card image cap">
+                                                src="{{ asset('storage/' . $school->logo) }}" alt="Card image cap">
                                         </div>
                                     </div>
                                 </div>
@@ -87,15 +87,15 @@
 
                                 <div class="card-body pt-0">
                                     <h3 class="fs-6">
-                                        {{ $school->user->name }}
+                                        {{ $school->name }}
                                     </h3>
-                                    <p class="mb-0 mt-2 text-muted">{{ $school->head_school }}</p>
+                                    <p class="mb-0 mt-2 text-muted">{{ $school->head_master }}</p>
                                     <h6 class="pt-3">Alamat :</h6>
                                     <p class="mb-0 mt-2 text-muted">{{ $school->address }}</p>
                                     <div class="d-flex pt-3">
                                         <span class="mb-1 badge bg-primary w-25 text-capitalize">{{ $school->type }}</span>
                                         <span
-                                            class="mb-1 w-25 badge bg-{{ $school->active == 1 ? 'success' : 'danger' }} ms-3">{{ $school->active == 1 ? 'Aktif' : 'Tidak aktif' }}</span>
+                                            class="mb-1 badge bg-{{ $school->active == 1 ? 'success' : 'danger' }} ms-3">{{ $school->active == 1 ? 'Aktif' : 'Tidak aktif' }}</span>
                                     </div>
                                     <div class="d-flex pt-3">
                                         @if ($school->active == 1)
@@ -105,7 +105,7 @@
                                             <button type="button" data-id="{{ $school->id }}"
                                                 class="btn waves-effect waves-light btn-rounded btn-light-success text-success w-50 btn-enable">Aktifkan</button>
                                         @endif
-                                        <a href="{{ route('school-admin.show', $school->user->slug) }}" type="button"
+                                        <a href="{{ route('school.show', $school->slug) }}" type="button"
                                             class="btn waves-effect waves-light btn-rounded btn-light-info text-info w-50 ms-3">Detail</a>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-auto mb-3">
-                    <a href="{{ route('school-admin.create') }}" type="button"
+                    <a href="{{ route('school.create') }}" type="button"
                         class="btn mb-1 waves-effect waves-light btn-rounded btn-primary">Tambah</a>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                                         <div class="d-flex justify-content-center align-items-center mb-3"
                                             style="height: 130px;">
                                             <img class="card-img-top img-responsive" style="max-height: 100%; width: auto"
-                                                src="{{ asset('storage/' . $activeSchool->image) }}"
+                                                src="{{ asset('storage/' . $activeSchool->logo) }}"
                                                 alt="Card image cap">
                                         </div>
                                     </div>
@@ -190,19 +190,18 @@
 
 
                                 <div class="card-body pt-0">
-                                    <h3 class="fs-6">{{ $activeSchool->user->name }}</h3>
-                                    <p class="mb-0 mt-2 text-muted">{{ $activeSchool->head_school }}</p>
+                                    <h3 class="fs-6">{{ $activeSchool->name }}</h3>
+                                    <p class="mb-0 mt-2 text-muted">{{ $activeSchool->head_master }}</p>
                                     <h6 class="pt-3">Alamat :</h6>
                                     <p class="mb-0 mt-2 text-muted">{{ $activeSchool->address }}</p>
                                     <div class="d-flex pt-3">
-                                        <span
-                                            class="mb-1 badge bg-primary w-25 text-capitalize">{{ $activeSchool->type }}</span>
-                                        <span class="mb-1 badge bg-success ms-3 w-25">Aktif</span>
+                                        <span class="mb-1 badge bg-primary w-25 text-capitalize">{{ $activeSchool->type }}</span>
+                                        <span class="mb-1 badge bg-success ms-3 ">Aktif</span>
                                     </div>
                                     <div class="d-flex pt-3">
                                         <button type="button" data-id="{{ $school->id }}"
                                             class="btn waves-effect waves-light btn-rounded btn-light-danger text-danger w-50 btn-disable">Non-aktifkan</button>
-                                        <a href="{{ route('school-admin.show', $school->user->slug) }}" type="button"
+                                        <a href="{{ route('school.show', $school->slug) }}" type="button"
                                             class="btn waves-effect waves-light btn-rounded btn-light-info text-info w-50 ms-3">Detail</a>
                                     </div>
                                 </div>
@@ -213,7 +212,7 @@
                             <img src="{{ asset('admin_assets/dist/images/empty/no-data.png') }}" alt=""
                                 width="300px">
                             <p class="fs-5 text-dark text-center mt-2">
-                                Kelas belum ada sekolah yang aktif
+                                Belum ada sekolah yang aktif
                             </p>
                         </div>
                     @endforelse
@@ -237,7 +236,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-auto mb-3">
-                    <a href="{{ route('school-admin.create') }}" type="button"
+                    <a href="{{ route('school.create') }}" type="button"
                         class="btn mb-1 waves-effect waves-light btn-rounded btn-primary">Tambah</a>
                 </div>
             </div>
@@ -279,7 +278,7 @@
                                         <div class="d-flex justify-content-center align-items-center mb-3"
                                             style="height: 130px;">
                                             <img class="card-img-top img-responsive" style="max-height: 100%; width: auto"
-                                                src="{{ asset('storage/' . $nonActiveSchool->image) }}"
+                                                src="{{ asset('storage/' . $nonActiveSchool->logo) }}"
                                                 alt="Card image cap">
                                         </div>
                                     </div>
@@ -287,18 +286,18 @@
 
 
                                 <div class="card-body pt-0">
-                                    <h3 class="fs-6">{{ $nonActiveSchool->user->name }}</h3>
-                                    <p class="mb-0 mt-2 text-muted">{{ $nonActiveSchool->head_school }}</p>
+                                    <h3 class="fs-6">{{ $nonActiveSchool->name }}</h3>
+                                    <p class="mb-0 mt-2 text-muted">{{ $nonActiveSchool->head_master }}</p>
                                     <h6 class="pt-3">Alamat :</h6>
                                     <p class="mb-0 mt-2 text-muted">{{ $nonActiveSchool->address }}</p>
                                     <div class="d-flex pt-3">
-                                        <span class="mb-1 badge bg-primary w-25">{{ $nonActiveSchool->type }}</span>
-                                        <span class="mb-1 badge bg-danger ms-3">Nonaktif</span>
+                                        <span class="mb-1 badge bg-primary w-25 text-capitalize">{{ $nonActiveSchool->type }}</span>
+                                        <span class="mb-1 badge bg-danger ms-3">Tidak aktif</span>
                                     </div>
                                     <div class="d-flex pt-3">
                                         <button type="button" data-id="{{ $school->id }}"
                                             class="btn waves-effect waves-light btn-rounded btn-light-success text-success w-50 btn-enable">Aktifkan</button>
-                                        <a href="{{ route('school-admin.show', $school->user->slug) }}" type="button"
+                                        <a href="{{ route('school.show', $school->slug) }}" type="button"
                                             class="btn waves-effect waves-light btn-rounded btn-light-info text-info w-50 ms-3">Detail</a>
                                     </div>
                                 </div>
@@ -329,19 +328,19 @@
     <script>
         $('.btn-delete').click(function() {
             var id = $(this).data('id');
-            $('#form-delete').attr('action', '/admin/school/' + id);
+            $('#form-delete').attr('action', '/school/' + id);
             $('#modal-delete').modal('show');
         });
 
         $('.btn-enable').click(function() {
             var id = $(this).data('id');
-            $('#form-enable').attr('action', '/admin/school/' + id + '/enable');
+            $('#form-enable').attr('action', '/school/' + id + '/enable');
             $('#modal-enable').modal('show');
         });
 
         $('.btn-disable').click(function() {
             var id = $(this).data('id');
-            $('#form-disable').attr('action', '/admin/school/' + id + '/disable');
+            $('#form-disable').attr('action', '/school/' + id + '/disable');
             $('#modal-disable').modal('show');
         });
     </script>

@@ -30,7 +30,7 @@
                     <h4><b>Pendaftaran Sekolah</b></h4>
                     <h6>Registrasi</h6>
                     <div class="wizard-content">
-                        <form action="{{ route('school-admin.store') }}" class="tab-wizard wizard-circle wizard clearfix" role="application" id="steps-uid-0" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('school.store') }}" class="tab-wizard wizard-circle wizard clearfix" role="application" id="steps-uid-0" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="steps clearfix">
@@ -69,7 +69,19 @@
                                 <div class="row mx-3 pt-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Nama Sekolah</h6>
+                                            <h6>Logo<span class="text-danger">*</span></h6>
+                                            <div id="imagePreview" class="mt-2 mb-2">
+                                                <img id="previewImg" alt="" style="display: none; width: 200px; height: auto; object-fit: cover;" />
+                                            </div>
+                                            <input class="form-control mb-3" name="logo" type="file" id="imageInput" onchange="previewFile()" value="{{ old('logo') }}">
+                                            @error('logo')
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6>Nama Sekolah<span class="text-danger">*</span></h6>
                                             <input type="text" name="name" class="form-control mb-3" value="{{ old('name') }}" placeholder="Masukkan nama sekolah">
                                             @error('name')
                                                 <strong class="text-danger">{{ $message }}</strong>
@@ -78,7 +90,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>NPSN</h6>
+                                            <h6>NPSN<span class="text-danger">*</span></h6>
                                             <input type="number" name="npsn" class="form-control mb-3" value="{{ old('npsn') }}" placeholder="Masukkan NPSN sekolah">
                                             @error('npsn')
                                                 <strong class="text-danger">{{ $message }}</strong>
@@ -87,7 +99,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Email</h6>
+                                            <h6>Email<span class="text-danger">*</span></h6>
                                             <input type="email" name="email" class="form-control mb-3" value="{{ old('email') }}" placeholder="Masukkan email sekolah">
                                             @error('email')
                                                 <strong class="text-danger">{{ $message }}</strong>
@@ -96,21 +108,18 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Nomor Telepon</h6>
-                                            <input type="number" name="phone_number" class="form-control mb-3" value="{{ old('phone_number') }}" placeholder="Masukkan nomor telepon sekolah">
-                                            @error('phone_number')
+                                            <h6>Password<span class="text-danger">*</span></h6>
+                                            <input type="password" name="password" class="form-control mb-3" value="{{ old('password') }}" placeholder="Masukkan password sekolah">
+                                            @error('password')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Logo</h6>
-                                            <div id="imagePreview" class="mt-2 mb-2">
-                                                <img id="previewImg" alt="" style="display: none; width: 200px; height: auto; object-fit: cover;" />
-                                            </div>
-                                            <input class="form-control" name="image" type="file" id="imageInput" onchange="previewFile()" value="{{ old('image') }}">
-                                            @error('image')
+                                            <h6>Nomor Telepon<span class="text-danger">*</span></h6>
+                                            <input type="number" name="phone_number" class="form-control mb-3" value="{{ old('phone_number') }}" placeholder="Masukkan nomor telepon sekolah">
+                                            @error('phone_number')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
@@ -128,7 +137,7 @@
                                 <div class="row mx-3 pt-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Provinsi</h6>
+                                            <h6>Provinsi<span class="text-danger">*</span></h6>
                                             <select class="form-select mr-sm-2 mb-4 province" id="inlineFormCustomSelect" name="province_id">
                                                 <option selected>Pilih provinsi</option>
                                                 @forelse ($provinces as $province)
@@ -144,7 +153,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Kota/Kabupaten</h6>
+                                            <h6>Kota/Kabupaten<span class="text-danger">*</span></h6>
                                             <select class="form-select mr-sm-2 mb-4 city" id="inlineFormCustomSelect" name="city_id">
                                                 <option selected>Pilih kota/kabupaten</option>
                                             </select>
@@ -155,14 +164,9 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Kecamatan</h6>
-                                            <select class="form-select mr-sm-2 mb-4" id="inlineFormCustomSelect" name="sub_district_id">
+                                            <h6>Kecamatan<span class="text-danger">*</span></h6>
+                                            <select class="form-select mr-sm-2 mb-4 sub-district" id="inlineFormCustomSelect" name="sub_district_id">
                                                 <option selected>Pilih kecamatan</option>
-                                                @forelse ($subdistricts as $subdistrict)
-                                                    <option value="{{ $subdistrict->id }}">{{ $subdistrict->name }}</option>
-                                                @empty
-                                                    <option disabled>Data tidak ditemukan</option>
-                                                @endforelse
                                             </select>
                                             @error('sub_district_id')
                                                 <strong class="text-danger">{{ $message }}</strong>
@@ -171,7 +175,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Kode Pos</h6>
+                                            <h6>Kode Pos<span class="text-danger">*</span></h6>
                                             <input type="number" name="pas_code" value="{{ old('pas_code') }}" class="form-control mb-3" placeholder="Masukkan kode pos sekolah">
                                             @error('pas_code')
                                                 <strong class="text-danger">{{ $message }}</strong>
@@ -180,7 +184,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <h6>Alamat</h6>
+                                            <h6>Alamat<span class="text-danger">*</span></h6>
                                             <textarea name="address" class="form-control mb-4" rows="3" placeholder="Masukkan alamat sekolah">{{ old('address') }}</textarea>
                                             @error('address')
                                                 <strong class="text-danger">{{ $message }}</strong>
@@ -188,7 +192,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <h6 class="mb-3">Tingkatan</h6>
+                                        <h6 class="mb-3">Tingkatan<span class="text-danger">*</span></h6>
                                         <div class="form-check form-check-inline">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input"
@@ -247,9 +251,18 @@
                                 <div class="row mx-3 pt-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Kepala Sekolah</h6>
-                                            <input type="text" name="head_school" value="{{ old('head_school') }}" class="form-control mb-3" placeholder="Masukkan nama kepala sekolah">
-                                            @error('head_school')
+                                            <h6>Kepala Sekolah<span class="text-danger">*</span></h6>
+                                            <input type="text" name="head_master" value="{{ old('head_master') }}" class="form-control mb-3" placeholder="Masukkan nama kepala sekolah">
+                                            @error('head_master')
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6>NIP Kepala Sekolah (opsional)</h6>
+                                            <input type="number" name="nip" value="{{ old('nip') }}" class="form-control mb-3" placeholder="Masukkan NIP Kepala Sekolah">
+                                            @error('nip')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
@@ -257,29 +270,20 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Web (Opsional)</h6>
-                                            <input type="text" name="website_school" value="{{ old('website_school') }}" class="form-control mb-3" placeholder="Masukkan website sekolah">
-                                            @error('website_school')
+                                            <input type="text" name="website" value="{{ old('website') }}" class="form-control mb-3" placeholder="Masukkan website sekolah">
+                                            @error('website')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Jenis Sekolah</h6>
+                                            <h6>Jenis Sekolah<span class="text-danger">*</span></h6>
                                             <select class="form-select mr-sm-2 mb-4" id="inlineFormCustomSelect" name="type">
                                                 <option value="negeri" selected>Negeri</option>
                                                 <option value="swasta" selected>Swasta</option>
                                             </select>
                                             @error('type')
-                                                <strong class="text-danger">{{ $message }}</strong>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <h6>NIP Kepala Sekolah</h6>
-                                            <input type="number" name="nip" value="{{ old('nip') }}" class="form-control mb-3" placeholder="Masukkan NIP Kepala Sekolah">
-                                            @error('nip')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
                                         </div>
@@ -298,7 +302,7 @@
                                         <div class="form-check form-check-inline">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input"
-                                                    id="customControlValidation2" name="accreditation" value="Akreditasi A">
+                                                    id="customControlValidation2" name="accreditation" value="A">
                                                 <label class="custom-control-label"
                                                     for="customControlValidation2">A</label>
                                             </div>
@@ -306,7 +310,7 @@
                                         <div class="form-check form-check-inline">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input"
-                                                    id="customControlValidation3" name="accreditation" value="Akreditasi B">
+                                                    id="customControlValidation3" name="accreditation" value="B">
                                                 <label class="custom-control-label"
                                                     for="customControlValidation3">B</label>
                                             </div>
@@ -314,9 +318,17 @@
                                         <div class="form-check form-check-inline">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input"
-                                                    id="customControlValidation4" name="accreditation" value="Akreditasi C">
+                                                    id="customControlValidation4" name="accreditation" value="C">
                                                 <label class="custom-control-label"
                                                     for="customControlValidation4">C</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="customControlValidation4" name="accreditation" value="Tidak Terakreditasi">
+                                                <label class="custom-control-label"
+                                                    for="customControlValidation4">Tidak Terakreditasi</label>
                                             </div>
                                         </div>
                                         @error('accreditation')
@@ -341,7 +353,6 @@
 
 @section('script')
     <script>
-        
         $('.province').change(function() {
             var id = $(this).val();
             getCities(id);
@@ -349,7 +360,7 @@
 
         function getCities(id) {
             $.ajax({
-                url: "/admin/get-cities",
+                url: "/get-cities",
                 method: "GET",
                 data: {
                     province_id: id
@@ -360,7 +371,32 @@
                 },
                 success: function(response) {
                     $.each(response.data, function(index, data) {
-                        $('.city').append('<option value="' + data.id + '">' + data.name + '</option>')
+                        $('.city').append('<option value="' + data.id + '">' + data.type + ' ' + data.name + '</option>')
+                    });
+                }
+            })
+        }
+    </script>
+    <script>
+        $('.city').change(function() {
+            var id = $(this).val();
+            getSubDistrict(id);
+        })
+
+        function getSubDistrict(id) {
+            $.ajax({
+                url: "/get-sub-districts",
+                method: "GET",
+                data: {
+                    city_id: id
+                },
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('.sub-district').html('')
+                },
+                success: function(response) {
+                    $.each(response.data, function(index, data) {
+                        $('.sub-district').append('<option value="' + data.id + '">' + data.name + '</option>')
                     });
                 }
             })

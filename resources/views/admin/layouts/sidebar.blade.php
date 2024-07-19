@@ -43,11 +43,11 @@
                 </li>
                 <li
                     class="sidebar-item ">
-                    <a class="sidebar-link {{ request()->routeIs('school-admin.index') ||
-                        request()->routeIs('school-admin.create') ||
-                        request()->routeIs('school-admin.show') ||
-                        request()->routeIs('school-admin.active') ||
-                        request()->routeIs('school-admin.nonactive') ? 'active' : '' }}" href="{{ route('school-admin.index') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('school.index') ||
+                        request()->routeIs('school.create') ||
+                        request()->routeIs('school.show') ||
+                        request()->routeIs('school.active') ||
+                        request()->routeIs('school.nonactive') ? 'active' : '' }}" href="{{ route('school.index') }}" aria-expanded="false">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
