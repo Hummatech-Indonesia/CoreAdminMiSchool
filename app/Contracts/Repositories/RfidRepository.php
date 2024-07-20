@@ -93,4 +93,11 @@ class RfidRepository extends BaseRepository implements RfidInterface
             $query->where('status', $request->status);
         })->paginate(10);
     }
+
+
+    public function check(string $rfid) : mixed {
+        return $this->model->query()
+        ->where('rfid', $rfid)
+        ->first();
+    }
 }
