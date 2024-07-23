@@ -95,7 +95,6 @@
                     <table class="table border text-nowrap customize-table mb-0 align-middle text-center">
                         <thead>
                             <tr>
-                                <th>Nama</th>
                                 <th>Nomor RFID</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
@@ -104,8 +103,6 @@
                         <tbody>
                             @forelse ($rfids as $rfid)
                             <tr>
-                                <td>belum difetch
-                                </td>
                                 <td>{{ $rfid->rfid }}</td>
                                 <td>
                                     <span class="mb-1 badge px-4 font-medium bg-light-{{ $rfid->status->color() }} text-{{ $rfid->status->color() }}">{{ $rfid->status->label() }}</span>
@@ -122,7 +119,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center align-middle">
+                                <td colspan="6" class="text-center align-middle">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
                                         <img src="{{ asset('admin_assets/dist/images/empty/no-data.png') }}" alt=""
                                             width="300px">
@@ -183,7 +180,6 @@
                     <table class="table border text-nowrap customize-table mb-0 align-middle text-center">
                         <thead>
                             <tr>
-                                <th>Nama</th>
                                 <th>Nomor RFID</th>
                                 <th>Status</th>
                             </tr>
@@ -191,7 +187,6 @@
                         <tbody>
                             @forelse ($usedRfids as $rfid)
                             <tr>
-                                <td>Belum difetch</td>
                                 <td>{{ $rfid->rfid }}</td>
                                 <td>
                                     <span class="mb-1 badge px-4 font-medium bg-light-{{ $rfid->status->color() }} text-{{ $rfid->status->color() }}">{{ $rfid->status->label() }}</span>
@@ -199,7 +194,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center align-middle">
+                                <td colspan="6" class="text-center align-middle">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
                                         <img src="{{ asset('admin_assets/dist/images/empty/no-data.png') }}" alt=""
                                             width="300px">
@@ -257,7 +252,6 @@
                     <table class="table border text-nowrap customize-table mb-0 align-middle text-center">
                         <thead>
                             <tr>
-                                <th>Nama</th>
                                 <th>Nomor RFID</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
@@ -266,7 +260,6 @@
                         <tbody>
                             @forelse ($notUsedRfids as $rfid)
                             <tr>
-                                <td>-</td>
                                 <td>{{ $rfid->rfid }}</td>
                                 <td>
                                     <span class="mb-1 badge px-4 font-medium bg-light-{{ $rfid->status->color() }} text-{{ $rfid->status->color() }}">{{ $rfid->status->label() }}</span>
@@ -281,7 +274,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center align-middle">
+                                <td colspan="6" class="text-center align-middle">
                                     <div class="d-flex flex-column justify-content-center align-items-center">
                                         <img src="{{ asset('admin_assets/dist/images/empty/no-data.png') }}" alt=""
                                             width="300px">
