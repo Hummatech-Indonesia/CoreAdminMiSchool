@@ -278,8 +278,7 @@
                                         <div class="d-flex justify-content-center align-items-center mb-3"
                                             style="height: 130px;">
                                             <img class="card-img-top img-responsive" style="max-height: 100%; width: auto"
-                                                src="{{ asset('storage/' . $nonActiveSchool->logo) }}"
-                                                alt="Card image cap">
+                                                src="{{ asset('storage/' . $nonActiveSchool->logo) }}">
                                         </div>
                                     </div>
                                 </div>
