@@ -30,7 +30,8 @@
                     <h4><b>Pendaftaran Sekolah</b></h4>
                     <h6>Registrasi</h6>
                     <div class="wizard-content">
-                        <form action="{{ route('school.store') }}" class="tab-wizard wizard-circle wizard clearfix" role="application" id="steps-uid-0" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('school.store') }}" class="tab-wizard wizard-circle wizard clearfix"
+                            role="application" id="steps-uid-0" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="steps clearfix">
@@ -69,20 +70,9 @@
                                 <div class="row mx-3 pt-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Logo<span class="text-danger">*</span></h6>
-                                            <div id="imagePreview" class="mt-2 mb-2">
-                                                <img id="previewImg" alt="" style="display: none; width: 200px; height: auto; object-fit: cover;" />
-                                            </div>
-                                            <input class="form-control mb-3" name="logo" type="file" id="imageInput" onchange="previewFile()" value="{{ old('logo') }}">
-                                            @error('logo')
-                                                <strong class="text-danger">{{ $message }}</strong>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
                                             <h6>Nama Sekolah<span class="text-danger">*</span></h6>
-                                            <input type="text" name="name" class="form-control mb-3" value="{{ old('name') }}" placeholder="Masukkan nama sekolah">
+                                            <input type="text" name="name" class="form-control mb-3"
+                                                value="{{ old('name') }}" placeholder="Masukkan nama sekolah">
                                             @error('name')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -91,7 +81,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>NPSN<span class="text-danger">*</span></h6>
-                                            <input type="number" name="npsn" class="form-control mb-3" value="{{ old('npsn') }}" placeholder="Masukkan NPSN sekolah">
+                                            <input type="number" name="npsn" class="form-control mb-3"
+                                                value="{{ old('npsn') }}" placeholder="Masukkan NPSN sekolah">
                                             @error('npsn')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -100,7 +91,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Email<span class="text-danger">*</span></h6>
-                                            <input type="email" name="email" class="form-control mb-3" value="{{ old('email') }}" placeholder="Masukkan email sekolah">
+                                            <input type="email" name="email" class="form-control mb-3"
+                                                value="{{ old('email') }}" placeholder="Masukkan email sekolah">
                                             @error('email')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -109,7 +101,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Password<span class="text-danger">*</span></h6>
-                                            <input type="password" name="password" class="form-control mb-3" value="{{ old('password') }}" placeholder="Masukkan password sekolah">
+                                            <input type="password" name="password" class="form-control mb-3"
+                                                value="{{ old('password') }}" placeholder="Masukkan password sekolah">
                                             @error('password')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -117,8 +110,24 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <h6>Logo<span class="text-danger">*</span></h6>
+                                            <input class="form-control mb-3" name="logo" type="file" id="imageInput"
+                                                onchange="previewFile()" value="{{ old('logo') }}">
+                                            <div id="imagePreview" class="mt-2 mb-2">
+                                                <img id="previewImg" alt=""
+                                                    style="display: none; width: 200px; height: auto; object-fit: cover;" />
+                                            </div>
+                                            @error('logo')
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <h6>Nomor Telepon<span class="text-danger">*</span></h6>
-                                            <input type="number" name="phone_number" class="form-control mb-3" value="{{ old('phone_number') }}" placeholder="Masukkan nomor telepon sekolah">
+                                            <input type="number" name="phone_number" class="form-control mb-3"
+                                                value="{{ old('phone_number') }}"
+                                                placeholder="Masukkan nomor telepon sekolah">
                                             @error('phone_number')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -138,7 +147,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Provinsi<span class="text-danger">*</span></h6>
-                                            <select class="form-select mr-sm-2 mb-4 province" id="inlineFormCustomSelect" name="province_id">
+                                            <select class="form-select mr-sm-2 mb-4 province" id="inlineFormCustomSelect"
+                                                name="province_id">
                                                 <option selected>Pilih provinsi</option>
                                                 @forelse ($provinces as $province)
                                                     <option value="{{ $province->id }}">{{ $province->name }}</option>
@@ -154,7 +164,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Kota/Kabupaten<span class="text-danger">*</span></h6>
-                                            <select class="form-select mr-sm-2 mb-4 city" id="inlineFormCustomSelect" name="city_id">
+                                            <select class="form-select mr-sm-2 mb-4 city" id="inlineFormCustomSelect"
+                                                name="city_id">
                                                 <option selected>Pilih kota/kabupaten</option>
                                             </select>
                                             @error('city_id')
@@ -165,7 +176,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Kecamatan<span class="text-danger">*</span></h6>
-                                            <select class="form-select mr-sm-2 mb-4 sub-district" id="inlineFormCustomSelect" name="sub_district_id">
+                                            <select class="form-select mr-sm-2 mb-4 sub-district"
+                                                id="inlineFormCustomSelect" name="sub_district_id">
                                                 <option selected>Pilih kecamatan</option>
                                             </select>
                                             @error('sub_district_id')
@@ -176,7 +188,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Kode Pos<span class="text-danger">*</span></h6>
-                                            <input type="number" name="pas_code" value="{{ old('pas_code') }}" class="form-control mb-3" placeholder="Masukkan kode pos">
+                                            <input type="number" name="pas_code" value="{{ old('pas_code') }}"
+                                                class="form-control mb-3" placeholder="Masukkan kode pos">
                                             @error('pas_code')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -252,7 +265,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Kepala Sekolah<span class="text-danger">*</span></h6>
-                                            <input type="text" name="head_master" value="{{ old('head_master') }}" class="form-control mb-3" placeholder="Masukkan nama kepala sekolah">
+                                            <input type="text" name="head_master" value="{{ old('head_master') }}"
+                                                class="form-control mb-3" placeholder="Masukkan nama kepala sekolah">
                                             @error('head_master')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -261,7 +275,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>NIP Kepala Sekolah (opsional)</h6>
-                                            <input type="number" name="nip" value="{{ old('nip') }}" class="form-control mb-3" placeholder="Masukkan NIP Kepala Sekolah">
+                                            <input type="number" name="nip" value="{{ old('nip') }}"
+                                                class="form-control mb-3" placeholder="Masukkan NIP Kepala Sekolah">
                                             @error('nip')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -270,7 +285,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Web (Opsional)</h6>
-                                            <input type="text" name="website" value="{{ old('website') }}" class="form-control mb-3" placeholder="Masukkan website sekolah">
+                                            <input type="text" name="website" value="{{ old('website') }}"
+                                                class="form-control mb-3" placeholder="Masukkan website sekolah">
                                             @error('website')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
@@ -279,7 +295,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Jenis Sekolah<span class="text-danger">*</span></h6>
-                                            <select class="form-select mr-sm-2 mb-4" id="inlineFormCustomSelect" name="type">
+                                            <select class="form-select mr-sm-2 mb-4" id="inlineFormCustomSelect"
+                                                name="type">
                                                 <option value="negeri" selected>Negeri</option>
                                                 <option value="swasta" selected>Swasta</option>
                                             </select>
@@ -326,9 +343,10 @@
                                         <div class="form-check form-check-inline">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input"
-                                                    id="customControlValidation4" name="accreditation" value="Tidak Terakreditasi">
-                                                <label class="custom-control-label"
-                                                    for="customControlValidation4">Tidak Terakreditasi</label>
+                                                    id="customControlValidation4" name="accreditation"
+                                                    value="Tidak Terakreditasi">
+                                                <label class="custom-control-label" for="customControlValidation4">Tidak
+                                                    Terakreditasi</label>
                                             </div>
                                         </div>
                                         @error('accreditation')
@@ -371,7 +389,8 @@
                 },
                 success: function(response) {
                     $.each(response.data, function(index, data) {
-                        $('.city').append('<option value="' + data.id + '">' + data.type + ' ' + data.name + '</option>')
+                        $('.city').append('<option value="' + data.id + '">' + data.type + ' ' + data
+                            .name + '</option>')
                     });
                 }
             })
@@ -396,7 +415,8 @@
                 },
                 success: function(response) {
                     $.each(response.data, function(index, data) {
-                        $('.sub-district').append('<option value="' + data.id + '">' + data.name + '</option>')
+                        $('.sub-district').append('<option value="' + data.id + '">' + data.name +
+                            '</option>')
                     });
                 }
             })
@@ -434,19 +454,19 @@
     </script>
 
     <script>
-            function previewFile() {
-        const preview = document.getElementById('previewImg');
-        const file = document.getElementById('imageInput').files[0];
-        const reader = new FileReader();
+        function previewFile() {
+            const preview = document.getElementById('previewImg');
+            const file = document.getElementById('imageInput').files[0];
+            const reader = new FileReader();
 
-        reader.addEventListener('load', function() {
-            preview.src = reader.result;
-            preview.style.display = 'block';
-        }, false);
+            reader.addEventListener('load', function() {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }, false);
 
-        if (file) {
-            reader.readAsDataURL(file);
+            if (file) {
+                reader.readAsDataURL(file);
+            }
         }
-    }
     </script>
 @endsection
