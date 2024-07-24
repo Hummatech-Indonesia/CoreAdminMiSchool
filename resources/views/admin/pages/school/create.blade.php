@@ -176,7 +176,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Kode Pos<span class="text-danger">*</span></h6>
-                                            <input type="number" name="pas_code" value="{{ old('pas_code') }}" class="form-control mb-3" placeholder="Masukkan kode pos sekolah">
+                                            <input type="number" name="pas_code" value="{{ old('pas_code') }}" class="form-control mb-3" placeholder="Masukkan kode pos">
                                             @error('pas_code')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
