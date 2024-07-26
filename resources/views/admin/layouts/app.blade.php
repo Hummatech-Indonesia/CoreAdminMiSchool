@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/dist/libs/owl.carousel/dist/owl.carousel.min.js') }}">
 
     <!-- Core Css -->
+    <link rel="stylesheet" href="{{ asset('admin_assets/dist/libs/select2/dist/css/select2.min.css') }}">
     <link id="themeColors" rel="stylesheet" href="{{ asset('admin_assets/dist/css/style.min.css') }}" />
     @yield('style')
 </head>
@@ -432,6 +433,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.48.0/apexcharts.min.js" integrity="sha512-wqcdhB5VcHuNzKcjnxN9wI5tB3nNorVX7Zz9NtKBxmofNskRC29uaQDnv71I/zhCDLZsNrg75oG8cJHuBvKWGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @yield('script')
+
+    <script src="{{ asset('admin_assets/dist/libs/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/dist/libs/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/dist/js/forms/select2.init.js') }}"></script>
+
     <script src="{{ asset('admin_assets/dist/summernote/dist/summernote-lite.min.js') }}"></script>
     <script src="{{ asset('admin_assets/dist/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('admin_assets/dist/libs/simplebar/dist/simplebar.min.js') }}"></script>

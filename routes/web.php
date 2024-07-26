@@ -29,7 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('school', SchoolController::class);
 Route::patch('school/{school}/enable', [SchoolController::class, 'active'])->name('school.active');
 Route::patch('school/{school}/disable', [SchoolController::class, 'nonactive'])->name('school.nonactive');
-
+    
 Route::resource('rfid' ,RfidController::class);
 
 Route::get('get-cities', [CityController::class, 'show'])->name('city.show');

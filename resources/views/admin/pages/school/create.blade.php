@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+
 @section('content')
     <div class="card bg-light-info shadow-none position-relative overflow-hidden">
         <div class="card-body px-4 py-3">
@@ -147,9 +148,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Provinsi<span class="text-danger">*</span></h6>
-                                            <select class="form-select mr-sm-2 mb-4 province" id="inlineFormCustomSelect"
-                                                name="province_id">
-                                                <option selected>Pilih provinsi</option>
+                                            <select class="form-select mr-sm-2 mb-4 province select2 select2-province" name="province_id">
+                                                <option>Pilih provinsi</option>
                                                 @forelse ($provinces as $province)
                                                     <option value="{{ $province->id }}">{{ $province->name }}</option>
                                                 @empty
@@ -164,8 +164,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Kota/Kabupaten<span class="text-danger">*</span></h6>
-                                            <select class="form-select mr-sm-2 mb-4 city" id="inlineFormCustomSelect"
-                                                name="city_id">
+                                            <select class="form-select mr-sm-2 mb-4 select2 select2-regency city" name="city_id">
                                                 <option selected>Pilih kota/kabupaten</option>
                                             </select>
                                             @error('city_id')
@@ -173,11 +172,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 mt-3">
                                         <div class="form-group">
                                             <h6>Kecamatan<span class="text-danger">*</span></h6>
-                                            <select class="form-select mr-sm-2 mb-4 sub-district"
-                                                id="inlineFormCustomSelect" name="sub_district_id">
+                                            <select class="form-select mr-sm-2 mb-4 select2 select2-subdistrict sub-district" name="sub_district_id">
                                                 <option selected>Pilih kecamatan</option>
                                             </select>
                                             @error('sub_district_id')
@@ -185,7 +183,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 mt-3">
                                         <div class="form-group">
                                             <h6>Kode Pos<span class="text-danger">*</span></h6>
                                             <input type="number" name="pas_code" value="{{ old('pas_code') }}"
@@ -370,6 +368,22 @@
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function() {
+            $('.select2-province').select2({
+                dropdownParent: $('.container')
+            });
+
+            $('.select2-regency').select2({
+                dropdownParent: $('.container')
+            });
+
+            $('.select2-subdistrict').select2({
+                dropdownParent: $('.container')
+            });
+        });
+    </script>
+
     <script>
         $('.province').change(function() {
             var id = $(this).val();
