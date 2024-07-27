@@ -17,4 +17,6 @@ interface RfidInterface extends GetInterface, StoreInterface, UpdateInterface, S
     public function notUsed(Request $request): mixed;
     public function search(Request $request): mixed;
     public function check(string $rfid): mixed;
+
+    public function updateUsed(mixed $rfid, array $data): mixed;
 }

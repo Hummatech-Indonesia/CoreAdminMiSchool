@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\RfidInterface;
+use App\Enums\RfidStatusEnum;
 use App\Models\Rfid;
 use App\Http\Requests\StoreRfidRequest;
 use App\Http\Requests\UpdateRfidRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class RfidController extends Controller
 {
@@ -32,7 +34,20 @@ class RfidController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            $response = Http::get(config('api.check_rfid'));
+
+            $data = $response->json();
+            $statusCode = $response->status();
+
+            foreach ($data['data'] as $item) {
+                $this->rfid->updateUsed($item['rfid'], ['status' => RfidStatusEnum::USED->value]);
+            }
+
+            return redirect()->back()->with('success', 'Berhasil refresh');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('warning', 'Tidak ada data');
+        }
     }
 
     /**

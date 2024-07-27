@@ -57,25 +57,34 @@
 
             <div class="row mt-5 mb-4">
                 <div class="col-lg-6 mb-3">
-                    <form class="d-flex gap-2">
-                        <div class="position-relative">
-                            <div class="">
-                                <input type="text" name="search" class="form-control search-chat py-2 px-5 ps-5" id="search-name" placeholder="Cari">
-                                <i class="ti ti-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                    <div class="d-flex gap-2">
+                        <form class="d-flex gap-2">
+                            <div class="position-relative">
+                                <div class="">
+                                    <input type="text" name="search" class="form-control search-chat py-2 px-5 ps-5" id="search-name" placeholder="Cari">
+                                    <i class="ti ti-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="d-flex gap-2">
-                            <select name="filter" class="form-select" id="search-status">
-                                <option value="">Tampilkan semua</option>
-                                <option value="terbaru">Terbaru</option>
-                                <option value="terlama">Terlama</option>
-                            </select>
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-md">filter</button>
-                        </div>
-                    </form>
+                            <div class="d-flex gap-2">
+                                <select name="filter" class="form-select" id="search-status">
+                                    <option value="">Tampilkan semua</option>
+                                    <option value="terbaru">Terbaru</option>
+                                    <option value="terlama">Terlama</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-md">filter</button>
+                            </div>
+                        </form>
+                        <form action="{{ route('rfid.create') }}" method="POST">
+                            @method('put')
+                            @csrf
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-md">refresh</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-lg-6 mb-3 d-flex justify-content-end">
                     <form action="{{ route('rfid.store') }}" method="post" class="d-flex align-items-center gap-3">
