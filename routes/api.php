@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ApiFaqController;
 use App\Http\Controllers\API\ApiRfidController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('rfid-check', [ApiRfidController::class, 'check']);
+Route::get('faq', [ApiFaqController::class, 'index']);
