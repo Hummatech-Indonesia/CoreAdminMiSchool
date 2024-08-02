@@ -83,8 +83,8 @@
                         <span class="hide-menu">Berita</span>
                     </a>
                 </li> --}}
-                {{-- <li class="sidebar-item">
-                    <a class="sidebar-link" href="/faq" aria-expanded="false">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('faq.index') }}" aria-expanded="false">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -96,7 +96,7 @@
                             </svg> </span>
                         <span class="hide-menu">FAQ</span>
                     </a>
-                </li> --}}
+                </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                         <span class="d-flex">

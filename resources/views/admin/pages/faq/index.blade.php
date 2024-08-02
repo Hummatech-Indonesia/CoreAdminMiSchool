@@ -48,52 +48,23 @@
         </div>
     </div>
 
-    <!-- modal tambah -->
-    <div class="modal fade" id="modal-import" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="importPegawai">Tambah FAQ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="form-group">
-                            <label for="" class="mb-2">Pertanyaan</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Jawaban</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light"
-                        data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Tambah</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="note-full-container" class="note-has-grid row">
-        @foreach (range(1, 6) as $item)
+        @forelse ($faqs as $faq)
             <div class="col-md-4 single-note-item all-category">
                 <div class="card card-body">
                     <span class="side-stick"></span>
                     <h5 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie">
-                        Apa Itu Mischool?
+                        {{ $faq->question }}
                     </h5>
                     <h6 class="note-date pt-3">Jawaban :</h6>
                     <div class="note-content">
                         <p class="note-inner-content"
                             data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.">
-                            Blandit
-                            tempus porttitor aasfs. Integer posuere erat a ante venenatis. </p>
+                            {{ $faq->answer }}
                     </div>
                     <div class="d-flex align-items-center">
-                        <a href="javascript:void(0)" class="link me-1 text-danger">
+                        <a href="javascript:void(0)" class="link me-1 text-danger btn-delete"
+                            data-id="{{ $faq->id }}">
                             <i class="ti ti-trash fs-7 remove-note"></i>
                         </a>
                         <div class="ms-auto">
@@ -112,8 +83,10 @@
                                     style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(0px, 23.2px, 0px);"
                                     data-popper-placement="bottom-end">
                                     <a type="button"
-                                        class="note-business badge-group-item badge-business dropdown-item position-relative category-business d-flex align-items-center"
-                                        data-bs-toggle="modal" data-bs-target="#modal-edit">
+                                        class="note-business badge-group-item badge-business dropdown-item position-relative category-business d-flex align-items-center btn-edit"
+                                        data-id="{{ $faq->id }}"
+                                        data-question="{{ $faq->question }}"
+                                        data-answer="{{ $faq->answer }}">
                                         Edit
                                     </a>
                                     <a type="button"
@@ -127,7 +100,15 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="{{ asset('admin_assets/dist/images/empty/no-data.png') }}" alt=""
+                    width="300px">
+                <p class="fs-5 text-dark text-center mt-2">
+                    FAQ belum ditambahkan
+                </p>
+            </div>
+        @endforelse
     </div>
 
     <nav aria-label="...">
@@ -150,61 +131,13 @@
         </ul>
     </nav>
 
-    <!-- modal edit -->
-    <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="importPegawai">Edit FAQ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="form-group">
-                            <label for="" class="mb-2">Pertanyaan</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Jawaban</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-rounded btn-light-danger text-danger"
-                        data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- modal detail -->
-    <div class="modal fade" id="modal-detail" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="importPegawai">Detail FAQ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="form-group">
-                            <label for="" class="mb-2">Pertanyaan</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Jawaban</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-rounded btn-light-danger text-danger"
-                        data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('admin.pages.faq.widgets.modal-create')
+    @include('admin.pages.faq.widgets.modal-edit')
+    @include('admin.pages.faq.widgets.modal-detail')
+    <x-delete-modal-component />
+@endsection
+@section('script')
+    @include('admin.pages.faq.scripts.edit')
+    @include('admin.pages.faq.scripts.detail')
+    @include('admin.pages.faq.scripts.delete')
 @endsection
