@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="col-12 col-md-auto mb-3">
-            <button type="button" class="btn mb-1 btn-light-primary text-primary btn-lg px-4 fs-4 font-medium"
+            <button type="button" class="btn mb-1 btn-primary"
                 data-bs-toggle="modal" data-bs-target="#modal-import">
                 Tambah FAQ
             </button>
@@ -69,9 +69,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-rounded btn-light-danger text-danger"
+                    <button type="button" class="btn btn-light"
                         data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </div>
         </div>

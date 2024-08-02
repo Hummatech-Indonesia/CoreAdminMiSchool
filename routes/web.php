@@ -34,3 +34,7 @@ Route::put('rfid-create', [RfidController::class, 'create'])->name('rfid.create'
 
 Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
 Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');
+
+Route::get('faq', function(){
+    return view('admin.pages.faq.faq');
+})->name('faq.index');
