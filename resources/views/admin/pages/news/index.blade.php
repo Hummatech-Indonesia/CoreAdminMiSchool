@@ -51,39 +51,6 @@
         </div>
     </div>
 
-    <!-- modal tambah -->
-    <div class="modal fade" id="modal-import" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="importPegawai">Tambah Berita</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="form-group">
-                            <label for="" class="mb-2">Judul</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Thumbnail</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Isi Berita</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-rounded btn-light-danger text-danger"
-                        data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="table-responsive rounded-2 mb-4">
         <table class="table border text-nowrap customize-table mb-0 align-middle">
             <thead class="text-dark fs-4">
@@ -149,93 +116,17 @@
                 @endforeach
             </tbody>
         </table>
-        <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0 mt-4">
-                <li class="page-item disabled">
-                    <a href="#" class="page-link" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                    <a href="#" class="page-link">1</a>
-                </li>
-                <li class="page-item">
-                    <a href="#" class="page-link">2</a>
-                </li>
-                <li class="page-item">
-                    <a href="#" class="page-link">3</a>
-                </li>
-                <li class="page-item">
-                    <a href="#" class="page-link">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- modal edit -->
-    <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="importPegawai">Edit Berita</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="form-group">
-                            <label for="" class="mb-2">Judul</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Thumbnail</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Isi Berita</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-rounded btn-light-danger text-danger"
-                        data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
-                </div>
-            </div>
+        <div class="pagination justify-content-end mb-0">
+            {{-- <x-paginate-component :paginator="$rfids" /> --}}
         </div>
     </div>
+
+    <!-- modal tambah -->
+    @include('admin.pages.news.widgets.modal-create')
+    <!-- modal edit -->
+    @include('admin.pages.news.widgets.modal-update')
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function() {
-            var quote = $('<blockquote class="quote">hello<footer>world</footer></blockquote>')[0];
-
-            $('#content').summernote({
-                blockquoteBreakingLevel: 2,
-                height: 520,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph', 'height']],
-                    ['table', ['table']],
-                    ['link', ['link']],
-                    ['picture', ['picture']],
-                    ['video', ['video']],
-                    ['codeview', ['codeview']],
-                    ['help', ['help']],
-                    ['insert', ['ul', 'blockquote']] // Include Blockquote button in 'insert' dropdown
-                ],
-
-                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact',
-                    'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
-                ],
-                fontNamesIgnoreCheck: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica',
-                    'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
-                ]
-
-            });
-        });
-    </script>
+    @include('admin.pages.news.script.index')
 @endsection
