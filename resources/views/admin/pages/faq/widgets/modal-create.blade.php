@@ -1,13 +1,13 @@
 <!-- modal tambah -->
 <div class="modal fade" id="modal-import" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <form action="{{ route('faq.store') }}" method="post">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="importPegawai">Tambah FAQ</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <form action="{{ route('faq.store') }}" method="post">
                 @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importPegawai">Tambah FAQ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <div class="form-group">
@@ -34,7 +34,7 @@
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

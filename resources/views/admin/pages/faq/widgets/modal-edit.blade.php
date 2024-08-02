@@ -1,10 +1,10 @@
 <!-- modal edit -->
 <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="editFaq" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <form id="form-edit" method="post">
-            @csrf
-            @method('PUT')
-            <div class="modal-content">
+        <div class="modal-content">
+            <form id="form-edit" method="post">
+                @csrf
+                @method('PUT')
                 <div class="modal-header">
                     <h5 class="modal-title" id="editFaq">Edit FAQ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -24,9 +24,10 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-rounded btn-light-danger text-danger"
                         data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Simpan perubahan</button>
+                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Simpan
+                        perubahan</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

@@ -9,12 +9,12 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <div class="form-group">
-                        <label for="" class="mb-2">Pertanyaan</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <h6 for="" class="mb-2">Pertanyaan</h6>
+                        <p>detail pertanyaan</p>
                     </div>
                     <div class="form-group">
-                        <label for="" class="mb-2 pt-3">Jawaban</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <h6 for="" class="mb-2 pt-3">Jawaban</h6>
+                        <p>detail jawaban</p>
                     </div>
                 </div>
             </div>
