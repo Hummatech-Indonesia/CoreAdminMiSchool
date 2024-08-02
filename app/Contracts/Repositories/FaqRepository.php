@@ -36,4 +36,9 @@ class FaqRepository extends BaseRepository implements FaqInterface
     {
         return $this->model->query()->findOrFail($id)->delete();
     }
+
+    public function paginate(): mixed
+    {
+        return $this->model->query()->paginate(10);
+    }
 }

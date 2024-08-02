@@ -21,7 +21,7 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = $this->faq->get();
+        $faqs = $this->faq->paginate();
         return view('admin.pages.faq.index', compact('faqs'));
     }
 
