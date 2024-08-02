@@ -10,18 +10,16 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <h6 for="" class="mb-2">Pertanyaan</h6>
-                        <p>detail pertanyaan</p>
+                        <p id="question-detail"></p>
                     </div>
                     <div class="form-group">
                         <h6 for="" class="mb-2 pt-3">Jawaban</h6>
-                        <p>detail jawaban</p>
+                        <p id="answer-detail"></p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-rounded btn-light-danger text-danger"
-                    data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
+                <button type="button" class="btn btn-rounded btn-light-danger text-danger"data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

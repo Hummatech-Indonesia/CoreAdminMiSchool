@@ -90,9 +90,10 @@
                                         Edit
                                     </a>
                                     <a type="button"
-                                        class="note-business badge-group-item badge-business dropdown-item position-relative category-business d-flex align-items-center"
-                                        data-bs-toggle="modal" data-bs-target="#modal-detail">
-                                        detail
+                                        class="note-business badge-group-item badge-business dropdown-item position-relative category-business d-flex align-items-center btn-detail"
+                                        data-question="{{ $faq->question }}"
+                                        data-answer="{{ $faq->answer }}">
+                                        Detail
                                     </a>
                                 </div>
                             </div>
