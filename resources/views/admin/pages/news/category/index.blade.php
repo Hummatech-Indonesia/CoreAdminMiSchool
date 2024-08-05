@@ -9,11 +9,11 @@
         <div class="card-body px-4 py-3">
             <div class="row align-items-center">
                 <div class="col-9">
-                    <h4 class="fw-semibold text-white mb-8">Berita</h4>
+                    <h4 class="fw-semibold text-white mb-8">Kategori</h4>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-muted text-white text-decoration-none"
-                                    href="javascript:void(0)">Daftar - daftar berita Mischool.id</a>
+                                    href="javascript:void(0)">Daftar kategori yang dipakai untuk menulis berita di mischool</a>
                             </li>
                         </ol>
                     </nav>
@@ -52,13 +52,12 @@
     </div>
 
     <div class="table-responsive rounded-2 mb-4">
-        <table class="table border text-nowrap customize-table mb-0 align-middle">
+        <table class="table border text-nowrap text-center customize-table mb-0 align-middle">
             <thead class="text-dark fs-4">
                 <tr class="">
-                    <th class="fs-4 fw-semibold mb-0">Thumbnail</th>
-                    <th class="fs-4 fw-semibold mb-0">Judul</th>
-                    <th class="fs-4 fw-semibold mb-0">Isi Berita</th>
-                    <th class="fs-4 fw-semibold mb-0">Tanggal Upload</th>
+                    <th class="fs-4 fw-semibold mb-0">No</th>
+                    <th class="fs-4 fw-semibold mb-0">Kategori</th>
+                    <th class="fs-4 fw-semibold mb-0">Dipakai</th>
                     <th class="fs-4 fw-semibold mb-0">Aksi</th>
                 </tr>
             </thead>
@@ -66,30 +65,16 @@
                 @foreach (range(1, 5) as $item)
                     <tr>
                         <td>
-                            <img src="{{ asset('admin_assets/dist/images/backgrounds/sd.png') }}" alt="SD/MI"
-                                style="width: 150px; height: auto;">
+                            {{ $loop->iteration }}
                         </td>
                         <td>
-                            Lorem ipsum dolor sit amet,...
+                            Pendidikan
                         </td>
                         <td>
-                            Mischool adalah Sistem Manajemen ...
+                            20
                         </td>
                         <td>
-                            10 mei 2022
-                        </td>
-                        <td>
-                            <a href="/admin/news-detail" type="button" class="btn mb-1 btn-primary btn-sm fs-2 font-medium">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="1.5">
-                                        <path d="M3 13c3.6-8 14.4-8 18 0" />
-                                        <path d="M12 17a3 3 0 1 1 0-6a3 3 0 0 1 0 6" />
-                                    </g>
-                                </svg>
-                            </a>
-
-                            <button type="button" class="btn mb-1 btn-warning btn-sm fs-2 font-medium"
+                            <button type="button" class="btn mb-1 me-2 btn-warning btn-sm fs-2 font-medium"
                                 data-bs-toggle="modal" data-bs-target="#modal-edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
@@ -100,7 +85,6 @@
                                     </g>
                                 </svg>
                             </button>
-
 
                             <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium"
                                 data-bs-toggle="modal" data-bs-target="#modal-edit">

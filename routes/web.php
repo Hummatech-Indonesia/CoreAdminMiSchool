@@ -41,6 +41,7 @@ Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
 Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');
 
 Route::get('news', fn() => view('admin.pages.news.index'))->name('news.index');
+Route::get('category', fn() => view('admin.pages.news.category.index'))->name('category.index');
 
 require_once __DIR__ . '/landing.php';
 
