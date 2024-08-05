@@ -4,6 +4,8 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\NewsCategoryController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RfidController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SubDistrictController;
@@ -38,9 +40,10 @@ Route::post('send-contact-us', [ContactUsController::class, 'store'])->name('con
 
 Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
 Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');
-
-Route::get('news', fn() => view('admin.pages.news.index'))->name('news.index');
 Route::get('category', fn() => view('admin.pages.news.category.index'))->name('category.index');
+
+Route::resource('news-category', NewsCategoryController::class);
+Route::resource('newses', NewsController::class);
 
 require_once __DIR__ . '/landing.php';
 
