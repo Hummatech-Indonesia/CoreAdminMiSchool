@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\RfidController;
 use App\Http\Controllers\SchoolController;
@@ -33,6 +34,8 @@ Route::patch('school/{school}/disable', [SchoolController::class, 'nonactive'])-
 Route::resource('rfid' ,RfidController::class)->except(['create']);
 Route::resource('faq', FaqController::class);
 Route::put('rfid-create', [RfidController::class, 'create'])->name('rfid.create');
+
+Route::post('send-contact-us', [ContactUsController::class, 'store'])->name('contactus.store');
 
 Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
 Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');
