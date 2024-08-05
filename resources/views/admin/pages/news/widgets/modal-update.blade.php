@@ -12,6 +12,15 @@
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="category" class="mb-2 pt-3">Kategori</label>
+                        <select class="form-select select2-create-student" name="classroom_id">
+                            <option value="" disabled selected>Pilih Kategori</option>
+                            <option value="1">Kategori 1</option>
+                            <option value="2">Kategori 2</option>
+                            <option value="3">Kategori 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="" class="mb-2 pt-3">Thumbnail</label>
                         <input class="form-control" type="file" id="formFile">
                     </div>
@@ -29,3 +38,4 @@
         </div>
     </div>
 </div>
+
