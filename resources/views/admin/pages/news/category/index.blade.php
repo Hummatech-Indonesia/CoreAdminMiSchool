@@ -75,7 +75,7 @@
                         </td>
                         <td>
                             <button type="button" class="btn mb-1 me-2 btn-warning btn-sm fs-2 font-medium"
-                                data-bs-toggle="modal" data-bs-target="#modal-edit">
+                                data-bs-toggle="modal" data-bs-target="#modal-update-category">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
                                     <g fill="none">
@@ -87,7 +87,7 @@
                             </button>
 
                             <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium"
-                                data-bs-toggle="modal" data-bs-target="#modal-update-category">
+                                data-bs-toggle="modal" data-bs-target="#modal-delete">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
                                     <path fill="currentColor"
@@ -106,9 +106,9 @@
     </div>
 
     <!-- modal tambah -->
-    @include('admin.pages.news.widgets.modal-create')
+    @include('admin.pages.news.category.widgets.modal-create')
     <!-- modal edit -->
-    @include('admin.pages.news.widgets.modal-update')
+    @include('admin.pages.news.category.widgets.modal-update')
 @endsection
 
 @section('script')
