@@ -22,7 +22,7 @@ class UpdateNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required|exists:news_categories,id,'.$this->id,
+            'news_category_id' => 'required|exists:news_categories,id,'.$this->id,
             'title' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg',
             'description' => 'required',
@@ -32,8 +32,8 @@ class UpdateNewsRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'category_id.required' => 'Kategori berita harus diisi',
-            'category_id.exists' => 'Kategori berita tidak ditemukan',
+            'news_category_id.required' => 'Kategori berita harus diisi',
+            'news_category_id.exists' => 'Kategori berita tidak ditemukan',
             'title.required' => 'Judul berita harus diisi',
             'image.required' => 'Gambar berita harus diisi',
             'image.mimes' => 'Gambar berita harus berekstensi jpeg, png, atau jpg',

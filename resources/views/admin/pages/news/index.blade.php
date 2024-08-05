@@ -93,8 +93,13 @@
                                 </svg>
                             </a>
 
-                            <button type="button" class="btn mb-1 btn-warning btn-sm fs-2 font-medium"
-                                data-bs-toggle="modal" data-bs-target="#modal-edit">
+                            <button type="button" class="btn mb-1 btn-warning btn-sm fs-2 font-medium btn-edit"
+                                data-id="{{ $news->id }}"
+                                data-title="{{ $news->title }}"
+                                data-news_category_id="{{ $news->news_category_id }}"
+                                data-image="{{ asset('storage/'. $news->image) }}"
+                                data-description="{{ $news->description }}"
+                                >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
                                     <g fill="none">
@@ -134,8 +139,11 @@
     @include('admin.pages.news.widgets.modal-create')
     <!-- modal edit -->
     @include('admin.pages.news.widgets.modal-update')
+    <x-delete-modal-component />
 @endsection
 
 @section('script')
     @include('admin.pages.news.script.index')
+    @include('admin.pages.news.script.edit')
+    @include('admin.pages.news.script.delete')
 @endsection
