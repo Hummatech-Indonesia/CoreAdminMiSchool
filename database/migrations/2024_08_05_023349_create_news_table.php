@@ -13,8 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->id();
+            $table->foreignId('news_category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('title');
             $table->string('slug')->unique();
             $table->string('image');
