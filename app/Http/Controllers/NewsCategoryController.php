@@ -6,14 +6,17 @@ use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Models\NewsCategory;
 use App\Http\Requests\StoreNewsCategoryRequest;
 use App\Http\Requests\UpdateNewsCategoryRequest;
+use App\Services\NewsCategoryService;
 
 class NewsCategoryController extends Controller
 {
     private NewsCategoryInterface $newsCategory;
+    private NewsCategoryService $newsCategoryService;
 
-    public function __construct(NewsCategoryInterface $newsCategory)
+    public function __construct(NewsCategoryInterface $newsCategory, NewsCategoryService $newsCategoryService)
     {
         $this->newsCategory = $newsCategory;
+        $this->newsCategoryService = $newsCategoryService;
     }
 
     /**
@@ -38,7 +41,8 @@ class NewsCategoryController extends Controller
      */
     public function store(StoreNewsCategoryRequest $request)
     {
-        $this->newsCategory->store($request->all());
+        $data = $this->newsCategoryService->store($request);
+        $this->newsCategory->store($data);
         return redirect()->back()->with('success', 'Kategori berita berhasil ditambahkan');
     }
 
@@ -61,18 +65,21 @@ class NewsCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNewsCategoryRequest $request, NewsCategory $newsCategory)
+    public function update(UpdateNewsCategoryRequest $request, NewsCategory $news_category)
     {
-        $this->newsCategory->update($newsCategory, $request->all());
+        // dd($request->all());
+        $data = $this->newsCategoryService->update($news_category, $request);
+        $this->newsCategory->update($news_category->id, $data);
+        // dd($data);
         return redirect()->back()->with('success', 'Kategori berita berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NewsCategory $newsCategory)
+    public function destroy(NewsCategory $news_category)
     {
-        $this->newsCategory->delete($newsCategory);
+        $this->newsCategory->delete($news_category->id);
         return redirect()->back()->with('success', 'Kategori berita berhasil dihapus');
     }
 }

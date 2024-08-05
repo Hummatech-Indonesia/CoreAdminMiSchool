@@ -31,6 +31,7 @@ class StoreNewsCategoryRequest extends FormRequest
         return [
             'name.required' => 'Nama kategori berita harus diisi',
             'name.max' => 'Nama kategori berita tidak boleh lebih dari :max karakter',
+            'name.unique' => 'Nama kategori berita sudah ditambahkan',
         ];
     }
 }

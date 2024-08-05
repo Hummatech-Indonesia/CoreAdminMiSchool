@@ -62,20 +62,21 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (range(1, 5) as $item)
+                @forelse ($newsCategories as $newsCategory)
                     <tr>
                         <td>
                             {{ $loop->iteration }}
                         </td>
                         <td>
-                            Pendidikan
+                            {{ $newsCategory->name }}
                         </td>
                         <td>
-                            20
+                            {{ $newsCategory->news->count() }}
                         </td>
                         <td>
-                            <button type="button" class="btn mb-1 me-2 btn-warning btn-sm fs-2 font-medium"
-                                data-bs-toggle="modal" data-bs-target="#modal-update-category">
+                            <button type="button" class="btn mb-1 me-2 btn-warning btn-sm fs-2 font-medium btn-edit"
+                                data-id="{{ $newsCategory->id }}" 
+                                data-name="{{ $newsCategory->name }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
                                     <g fill="none">
@@ -86,8 +87,9 @@
                                 </svg>
                             </button>
 
-                            <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium"
-                                data-bs-toggle="modal" data-bs-target="#modal-delete">
+                            <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium btn-delete"
+                                data-id="{{ $newsCategory->id }}"
+                                data-bs-toggle="modal" data-bs-target="#modal-edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
                                     <path fill="currentColor"
@@ -97,7 +99,11 @@
 
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="4">Tidak ada data</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
         <div class="pagination justify-content-end mb-0">
@@ -109,8 +115,11 @@
     @include('admin.pages.news.category.widgets.modal-create')
     <!-- modal edit -->
     @include('admin.pages.news.category.widgets.modal-update')
+    <x-delete-modal-component />
 @endsection
 
 @section('script')
     @include('admin.pages.news.script.index')
+    @include('admin.pages.news.category.scripts.edit')
+    @include('admin.pages.news.category.scripts.delete')
 @endsection
