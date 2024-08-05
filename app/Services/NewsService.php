@@ -7,6 +7,7 @@ use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\News;
 use App\Traits\UploadTrait;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class NewsService
@@ -27,6 +28,7 @@ class NewsService
         $data = $request->validated();
         // Buat slug dari judul berita.
         $data['slug'] = Str::slug($data['title']);
+        $data['date'] = Carbon::now()->format('Y-m-d');
 
         // Jika ada file foto yang valid, simpan file tersebut.
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -41,6 +43,7 @@ class NewsService
         $data = $request->validated();
         // Buat slug baru dari judul berita.
         $data['slug'] = Str::slug($data['title']);
+        $data['date'] = Carbon::now()->format('Y-m-d');
 
         // Jika ada file foto baru yang valid, simpan file tersebut.
         if ($request->hasFile('image') && $request->file('image')->isValid()) {

@@ -57,6 +57,7 @@
             <thead class="text-dark fs-4">
                 <tr class="">
                     <th class="fs-4 fw-semibold mb-0">Thumbnail</th>
+                    <th class="fs-4 fw-semibold mb-0">Kategori</th>
                     <th class="fs-4 fw-semibold mb-0">Judul</th>
                     <th class="fs-4 fw-semibold mb-0">Isi Berita</th>
                     <th class="fs-4 fw-semibold mb-0">Tanggal Upload</th>
@@ -64,20 +65,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (range(1, 5) as $item)
+                @forelse ($newses as $news)
                     <tr>
                         <td>
-                            <img src="{{ asset('admin_assets/dist/images/backgrounds/sd.png') }}" alt="SD/MI"
-                                style="width: 150px; height: auto;">
+                            <img src="{{ asset('storage/'. $news->image) }}" style="width: 150px; height: auto;">
                         </td>
                         <td>
-                            Lorem ipsum dolor sit amet,...
+                            <div class="badge bg-light-primary text-primary">{{ $news->newsCategory->name }}</div>
                         </td>
                         <td>
-                            Mischool adalah Sistem Manajemen ...
+                            {{ Str::limit($news->title, 100) }}
                         </td>
                         <td>
-                            10 mei 2022
+                            {!! Str::limit($news->description, 150) !!}
+                        </td>
+                        <td>
+                            {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}
                         </td>
                         <td>
                             <a href="/admin/news-detail" type="button" class="btn mb-1 btn-primary btn-sm fs-2 font-medium">
@@ -111,10 +114,15 @@
                                         d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1M20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2M10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1" />
                                 </svg>
                             </button>
-
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            <span>Tidak ada data!</span>
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
         <div class="pagination justify-content-end mb-0">
