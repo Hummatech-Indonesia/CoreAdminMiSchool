@@ -50,7 +50,7 @@
 
     <div class="container">
         <div class="bred_text">
-            <h1>Hubungi Kami</h1>
+            <h1 class="text-primary">Hubungi Kami</h1>
             <ul>
                 <li><a href="/">Beranda</a></li>
                 <li><span>»</span></li>

@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="section_title" data-aos="fade-in" data-aos-duration="1500">
-                            <h2>Tentang Mischool</h2>
+                            <h1 class="text-primary">Tentang Mischool</h1>
                             <p>Lorem Ipsum is simply dummy text of the printing and typese tting indus
                                 orem Ipsum has beenthe standard dummybeenthe standard dummy
                                 text ever since when an own Ipsums.</p>

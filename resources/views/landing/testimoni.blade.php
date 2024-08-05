@@ -38,7 +38,7 @@
 
     <div class="container">
         <div class="bred_text">
-            <h1>Testimonial</h1>
+            <h1 class="text-primary">Testimonial</h1>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><span>»</span></li>
