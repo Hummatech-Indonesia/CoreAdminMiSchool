@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="importPegawai">Edit Berita</h5>
@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <label for="" class="mb-2 pt-3">Isi Berita</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" id="update-news-content" rows="3"></textarea>
                     </div>
                 </div>
             </div>
