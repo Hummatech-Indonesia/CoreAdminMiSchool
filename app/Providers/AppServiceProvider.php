@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use App\Contracts\Interfaces\CityInterface;
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\ProvinceInterface;
 use App\Contracts\Interfaces\RfidInterface;
 use App\Contracts\Interfaces\SchoolInterface;
 use App\Contracts\Interfaces\SubDistrictInterface;
 use App\Contracts\Repositories\CityRepository;
 use App\Contracts\Repositories\FaqRepository;
+use App\Contracts\Repositories\NewsCategoryRepository;
 use App\Contracts\Repositories\ProvinceRepository;
 use App\Contracts\Repositories\RfidRepository;
 use App\Contracts\Repositories\SchoolRepository;
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         SchoolInterface::class => SchoolRepository::class,
         RfidInterface::class => RfidRepository::class,
         FaqInterface::class => FaqRepository::class,
+        NewsCategoryInterface::class => NewsCategoryRepository::class,
     ];
     /**
      * Register any application services.

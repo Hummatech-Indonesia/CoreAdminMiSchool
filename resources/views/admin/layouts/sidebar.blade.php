@@ -65,11 +65,9 @@
                         <span class="hide-menu">Daftar Sekolah</span>
                     </a>
                 </li>
-
-
                 {{-- <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/news" aria-expanded="false">
-                        <span>
+                    <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+                        <span class="d-flex">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-news">
@@ -79,9 +77,28 @@
                                 <path d="M8 8l4 0" />
                                 <path d="M8 12l4 0" />
                                 <path d="M8 16l4 0" />
-                            </svg> </span>
+                            </svg>
+                        </span>
                         <span class="hide-menu">Berita</span>
                     </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Kategori berita</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('news.index') }}" class="sidebar-link">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu">Semua berita</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li> --}}
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('faq.index') }}" aria-expanded="false">
