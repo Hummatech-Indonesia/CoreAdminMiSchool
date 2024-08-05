@@ -28,7 +28,8 @@ class NewsController extends Controller
     public function index()
     {
         $newses = $this->news->get();
-        return view('admin.pages.news.index', compact('newses'));
+        $categories = $this->newsCategory->get();
+        return view('admin.pages.news.index', compact('newses', 'categories'));
     }
 
     /**
@@ -46,6 +47,7 @@ class NewsController extends Controller
     public function store(StoreNewsRequest $request)
     {
         $data = $this->newsService->store($request);
+        // dd($data);
         $this->news->store($data);
         return redirect()->back()->with('success', 'Berita berhasil ditambahkan');
     }

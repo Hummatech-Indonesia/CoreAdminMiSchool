@@ -18,11 +18,9 @@ return new class extends Migration
             $table->text('title');
             $table->string('slug')->unique();
             $table->string('image');
-            $table->string('thumbnail');
             $table->date('date');
             $table->longText('description');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
