@@ -27,4 +27,4 @@ Route::get('package', function(){
 
 Route::get('/landing', function(){
     return view('welcome');
-});
+})->name('landing');

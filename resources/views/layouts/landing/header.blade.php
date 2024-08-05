@@ -46,6 +46,11 @@
         transition: 0.4s all;
         font-weight: 700;
     }
+
+    .nav-item.active .nav-link {
+        color: #007bff !important;
+    }
+
 </style>
 
 
@@ -58,8 +63,7 @@
             <a class="navbar-brand" href="index.html">
                 <img src="{{ asset('assets/images/logo/logo-miscool.png') }}" alt="image">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
                     <div class="toggle-wrap">
                         <span class="toggle-bar"></span>
@@ -69,33 +73,31 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Beranda</a>
+                    <li class="nav-item {{ request()->routeIs('landing') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('landing') }}">Beranda</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about-us">Tentang Kami</a>
+                    <li class="nav-item {{ request()->routeIs('about-us') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('about-us') }}">Tentang Kami</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/package">Paket</a>
+                    <li class="nav-item {{ request()->routeIS('package') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('package') }}">Paket</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact-us">Kontak</a>
+                    <li class="nav-item {{ request()->routeIS('contact-us') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('contact-us') }}">Kontak</a>
                     </li>
                     <li class="nav-item has_dropdown">
-                        <a class="nav-link" href="#">Lainnya</a>
+                        <a class="nav-link {{ request()->routeIS('testimoni') ? 'active' : '' }}" href="#">Lainnya</a>
                         <span class="drp_btn"><i class="icofont-rounded-down"></i></span>
                         <div class="sub_menu">
                             <ul>
                                 <li><a href="javascript:void(0)">Dokumentasi</a></li>
-                                <li><a href="/testimoni">Testimonial</a></li>
-                                <li><a href="/news">Berita</a></li>
-
+                                <li><a href="{{ route('testimoni') }}">Testimonial</a></li>
+                                <li><a href="{{ route('news') }}">Berita</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dark_btn" href="/login">Masuk<i
-                                class="icofont-arrow-right"></i></a>
+                        <a class="nav-link dark_btn" href="/login">Masuk<i class="icofont-arrow-right"></i></a>
                     </li>
                 </ul>
             </div>
