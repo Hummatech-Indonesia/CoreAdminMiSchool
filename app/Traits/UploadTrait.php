@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use Exception;
 use App\Helpers\ImageCompressing;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -99,9 +100,33 @@ trait UploadTrait
      * @see https://image.intervention.io/v3/introduction/index
      * @see https://image.intervention.io/v3/modifying/resizing
      */
-    public function compressImage($fileName, $imagePath, $storePath, array $options = []): mixed
+    public function compressImage($fileName, $file): mixed
     {
-        $storedImage = ImageCompressing::process($fileName, $imagePath, $storePath, $options)->toArray();
-        return $storedImage['files'];
+        $imageInfo = getimagesize($file);
+        $imageType = $imageInfo[2];
+
+        switch ($imageType) {
+            case IMAGETYPE_JPEG:
+                $sourceImage = imagecreatefromjpeg($file);
+                break;
+            case IMAGETYPE_PNG:
+                $sourceImage = imagecreatefrompng($file);
+                break;
+            default:
+                throw new Exception('Unsupported image type');
+        }
+
+        // Generate temporary file name with specific prefix and .webp extension
+        $tempFileName = $fileName . '.webp';
+        $tempFilePath = sys_get_temp_dir() . '/' . $tempFileName;
+
+        // Save the compressed image as webp
+        imagewebp($sourceImage, $tempFilePath, 80);
+
+        // Clean up resources
+        imagedestroy($sourceImage);
+
+        // Create an UploadedFile instance to return
+        return new UploadedFile($tempFilePath, $tempFileName, 'image/webp', null, true);
     }
 }

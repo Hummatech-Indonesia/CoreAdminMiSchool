@@ -33,7 +33,9 @@ class SchoolService
 
         // Jika ada file logo yang valid, simpan file tersebut.
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            $data['logo'] = $request->file('logo')->store(UploadDiskEnum::SCHOOL->value, 'public');
+            $compressedImage = $this->compressImage($data['slug'], $request->hasFile('logo'));
+            // $data['logo'] = $request->file('logo')->store(UploadDiskEnum::SCHOOL->value, 'public');
+            $data['logo'] = $this->upload(UploadDiskEnum::SCHOOL->value, $compressedImage);
         }
         return $data;
     }
@@ -51,7 +53,9 @@ class SchoolService
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
             // Hapus file logo lama.
             $this->remove($school->logo);
-            $data['logo'] = $request->file('logo')->store(UploadDiskEnum::SCHOOL->value, 'public');
+            $compressedImage = $this->compressImage($data['slug'], $request->hasFile('logo'));
+            // $data['logo'] = $request->file('logo')->store(UploadDiskEnum::SCHOOL->value, 'public');
+            $data['logo'] = $this->upload(UploadDiskEnum::SCHOOL->value, $compressedImage);
         } else {
             // Pertahankan logo lama jika tidak ada file baru.
             $data['logo'] = $school->logo;
