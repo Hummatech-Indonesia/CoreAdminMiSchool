@@ -722,84 +722,25 @@
         <!-- faq data -->
         <div class="faq_panel">
             <div class="accordion" id="accordionExample">
-                <div class="card" data-aos="fade-up" data-aos-duration="1500">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button type="button" class="btn btn-link active" data-toggle="collapse" data-target="#collapseOne">
-                                <i class="icon_faq icofont-plus"></i> How can i pay ?</button>
-                        </h2>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum
-                                has. been the
-                                industrys standard dummy text ever since the when an unknown printer took a galley of
-                                type and
-                                scrambled it to make a type specimen book. It has survived not only five cen turies but
-                                also the
-                                leap into electronic typesetting, remaining essentially unchanged.</p>
+                @forelse ($faqs as $key => $faq)
+                    <div class="card" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link {{ $key === 0 ? 'active' : '' }}" data-toggle="collapse"
+                                    data-target="#collapseOne">
+                                    <i class="icon_faq icofont-plus"></i>{{ $faq['question'] }}</button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>{{ $faq['answer'] }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"><i class="icon_faq icofont-plus"></i> How to setup account
-                                ?</button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum
-                                has. been the
-                                industrys standard dummy text ever since the when an unknown printer took a galley of
-                                type and
-                                scrambled it to make a type specimen book. It has survived not only five cen turies but
-                                also the
-                                leap into electronic typesetting, remaining essentially unchanged.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"><i class="icon_faq icofont-plus"></i>What is process to
-                                get refund
-                                ?</button>
-                        </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum
-                                has. been the
-                                industrys standard dummy text ever since the when an unknown printer took a galley of
-                                type and
-                                scrambled it to make a type specimen book. It has survived not only five cen turies but
-                                also the
-                                leap into electronic typesetting, remaining essentially unchanged.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500">
-                    <div class="card-header" id="headingFour">
-                        <h2 class="mb-0">
-                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"><i class="icon_faq icofont-plus"></i>What is process to
-                                get refund
-                                ?</button>
-                        </h2>
-                    </div>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum
-                                has. been the
-                                industrys standard dummy text ever since the when an unknown printer took a galley of
-                                type and
-                                scrambled it to make a type specimen book. It has survived not only five cen turies but
-                                also the
-                                leap into electronic typesetting, remaining essentially unchanged.</p>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    
+                @endforelse
             </div>
         </div>
     </div>

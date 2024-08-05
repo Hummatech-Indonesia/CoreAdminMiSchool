@@ -24,7 +24,3 @@ Route::get('contact-us', function(){
 Route::get('package', function(){
     return view('landing.package');
 })->name('package');
-
-Route::get('/landing', function(){
-    return view('welcome');
-})->name('landing');
