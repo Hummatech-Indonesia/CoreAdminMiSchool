@@ -25,10 +25,10 @@ class NewsService
     {
         // Validasi data request.
         $data = $request->validated();
-        // Buat slug dari nama sekolah.
+        // Buat slug dari judul berita.
         $data['slug'] = Str::slug($data['title']);
 
-        // Jika ada file logo yang valid, simpan file tersebut.
+        // Jika ada file foto yang valid, simpan file tersebut.
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $data['image'] = $request->file('image')->store(UploadDiskEnum::NEWS->value, 'public');
         }
@@ -39,10 +39,10 @@ class NewsService
     {
         // Validasi data request.
         $data = $request->validated();
-        // Buat slug baru dari nama sekolah.
+        // Buat slug baru dari judul berita.
         $data['slug'] = Str::slug($data['title']);
 
-        // Jika ada file logo baru yang valid, simpan file tersebut.
+        // Jika ada file foto baru yang valid, simpan file tersebut.
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             // Hapus file image lama.
             $this->remove($news->image);
@@ -59,7 +59,7 @@ class NewsService
 
     public function delete(News $news)
     {
-        // Hapus file logo jika ada.
+        // Hapus file foto jika ada.
         if ($news->image != null) {
             $this->remove($news->image);
         }

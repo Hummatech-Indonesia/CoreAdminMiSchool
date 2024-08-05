@@ -7,9 +7,9 @@ use App\Models\NewsCategory;
 
 class NewsCategoryRepository extends BaseRepository implements NewsCategoryInterface
 {
-    public function __construct(NewsCategory $newsCategory)
+    public function __construct(NewsCategory $news_category)
     {
-        $this->model = $newsCategory;
+        $this->model = $news_category;
     }
 
     public function get(): mixed
