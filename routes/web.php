@@ -6,7 +6,7 @@ use App\Http\Controllers\RfidController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SubDistrictController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+    use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/landing', function(){
+    return view('welcome');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -36,3 +40,6 @@ Route::put('rfid-create', [RfidController::class, 'create'])->name('rfid.create'
 
 Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
 Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');
+
+
+require_once __DIR__ . '/landing.php';
