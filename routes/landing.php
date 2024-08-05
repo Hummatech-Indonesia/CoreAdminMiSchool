@@ -14,6 +14,10 @@ Route::get('news', function(){
     return view('landing.news.news');
 })->name('news');
 
+Route::get('news-category', function(){
+    return view('landing.news.news-category');
+})->name('news.category');
+
 Route::get('testimoni', function(){
     return view('landing.testimoni');
 })->name('testimoni');
