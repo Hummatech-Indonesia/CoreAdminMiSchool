@@ -22,7 +22,7 @@ class NewsCategoryController extends Controller
     public function index()
     {
         $newsCategories = $this->newsCategory->get();
-        return view('', compact('newsCategories'));
+        return view('admin.pages.news.category.index', compact('newsCategories'));
     }
 
     /**

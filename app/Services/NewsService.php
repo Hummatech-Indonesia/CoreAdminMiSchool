@@ -47,7 +47,7 @@ class NewsService
             // Hapus file image lama.
             $this->remove($news->image);
             $this->remove($news->thumbnail);
-            $data['image'] = $request->file('image')->store(UploadDiskEnum::news->value, 'public');
+            $data['image'] = $request->file('image')->store(UploadDiskEnum::NEWS->value, 'public');
         } else {
             // Pertahankan image lama jika tidak ada file baru.
             $data['image'] = $news->image;
