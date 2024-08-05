@@ -37,8 +37,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $newsCategories = $this->newsCategory->get();
-        return view('', compact('newsCategories'));
+        //
     }
 
     /**
@@ -47,7 +46,6 @@ class NewsController extends Controller
     public function store(StoreNewsRequest $request)
     {
         $data = $this->newsService->store($request);
-        // dd($data);
         $this->news->store($data);
         return redirect()->back()->with('success', 'Berita berhasil ditambahkan');
     }
@@ -65,27 +63,27 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        $newsCategories = $this->newsCategory->get();
-        return view('', compact('newsCategories'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNewsRequest $request, News $news)
+    public function update(UpdateNewsRequest $request, News $newses)
     {
-        $data = $this->newsService->update($news, $request);
-        $this->news->update($news->id, $data);
+        dd($request->all());
+        $data = $this->newsService->update($newses, $request);
+        $this->news->update($newses->id, $data);
         return redirect()->back()->with('success', 'Berita berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+    public function destroy(News $newses)
     {
-        $this->newsService->delete($news);  
-        $this->news->delete($news->id);
+        $this->newsService->delete($newses);  
+        $this->news->delete($newses->id);
         return redirect()->back()->with('success', 'Berita berhasil dihapus');
     }
 }
