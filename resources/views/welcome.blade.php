@@ -56,15 +56,7 @@
 
     .navbar-expand-lg .navbar-nav .nav-link.dark_btn {
         color: var(--text-white);
-        background-image: var(#5D87FF);
-        font-size: 15px;
-        padding: 9px 38px;
-        border-radius: 25px;
-        margin-left: 20px;
-        position: relative;
-        overflow: hidden;
-        transition: 0.4s all;
-        font-weight: 700;
+        background-image: var(--primary);
     }
 
     .company_logos .logo img {
