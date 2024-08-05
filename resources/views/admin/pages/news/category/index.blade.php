@@ -45,8 +45,8 @@
         </div>
         <div class="col-12 col-md-auto mb-3">
             <button type="button" class="btn mb-1 btn-primary btn-lg px-4 fs-4 font-medium" data-bs-toggle="modal"
-                data-bs-target="#modal-import">
-                Tambah Berita
+                data-bs-target="#modal-create-category">
+                Tambah Kategori
             </button>
         </div>
     </div>
@@ -87,7 +87,7 @@
                             </button>
 
                             <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium"
-                                data-bs-toggle="modal" data-bs-target="#modal-edit">
+                                data-bs-toggle="modal" data-bs-target="#modal-update-category">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
                                     <path fill="currentColor"
