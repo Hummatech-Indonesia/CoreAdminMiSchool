@@ -11,7 +11,7 @@
             $('#news-category-edit').val(news_category_id);
             $('#image-edit').attr('src', image);
 
-            $('#form-edit').attr('action', '{{ route('newses.update', '') }}/' + id);
+            $('#form-edit').attr('action', '{{ route('news.update', '') }}/' + id);
             $('#modal-edit').modal('show');
         });
     });

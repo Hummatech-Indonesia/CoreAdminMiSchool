@@ -3,7 +3,7 @@
         $('.btn-delete').click(function() {
             var id = $(this).data('id');
             
-            $('#form-delete').attr('action', '/news-category/' + id);
+            $('#form-delete').attr('action', '{{ route('news.destroy', '') }}/' + id);
             $('#modal-delete').modal('show');
         });
     });

@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-import" tabindex="-1" aria-labelledby="importPegawai" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-           <form action="{{ route('newses.store') }}" method="POST" enctype="multipart/form-data">
+           <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="importPegawai">Tambah Berita</h5>

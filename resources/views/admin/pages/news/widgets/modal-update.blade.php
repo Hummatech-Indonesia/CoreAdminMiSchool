@@ -14,8 +14,8 @@
                             <label for="" class="mb-2">Judul</label>
                             <input type="text" placeholder="Masukan judul" name="title" id="title-edit" class="form-control" value="{{ old('title') }}">
                             @error('title')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="text-danger">
+                                    {{ $message }}
                                 </span>
                             @enderror
                         </div>
@@ -24,8 +24,8 @@
                             <img id="image-edit" class="w-25">
                             <input class="form-control" type="file" name="image" id="formFile">
                             @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="text-danger">
+                                    {{ $message }}
                                 </span>
                             @enderror
                         </div>
@@ -38,8 +38,8 @@
                                 @endforeach
                             </select>
                             @error('news_category_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="text-danger">
+                                    {{ $message }}
                                 </span>
                             @enderror
                         </div>
@@ -47,8 +47,8 @@
                             <label for="" class="mb-2 pt-3">Isi Berita</label>
                             <textarea class="form-control" id="update-news-content" name="description" rows="3">{{ old('description') }}</textarea>
                             @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="text-danger">
+                                    {{ $message }}
                                 </span>
                             @enderror
                         </div>
@@ -57,7 +57,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-rounded btn-light-danger text-danger"
                         data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
+                    <button type="submit" class="btn btn-rounded btn-light-success text-success">Simpan</button>
                 </div>
             </form>
         </div>
