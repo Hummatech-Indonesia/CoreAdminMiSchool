@@ -7,10 +7,7 @@ Route::get('about-us', function(){
     return view('landing.about-us');
 })->name('about-us');
 
-Route::get('news-detail', function(){
-    return view('landing.news.detail');
-})->name('news-detail');
-
+Route::get('news/{slug}', [NewsController::class, 'show'])->name('news.detail');
 Route::get('news', [NewsController::class, 'index'])->name('news');
 
 Route::get('testimoni', function(){
