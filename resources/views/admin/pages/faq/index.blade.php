@@ -34,20 +34,20 @@
 
     <div class="d-flex flex-wrap justify-content-between align-items-center">
         <div class="d-flex flex-wrap">
-            <div class="col-12 col-md-6 col-lg-6 mb-3 me-3">
-                <form action="" class="position-relative">
-                    <input type="text" class="form-control product-search ps-5" id="input-search"
-                        placeholder="Cari tim...">
+            <div class="col-12 col-md-6 col-lg-12 mb-3 me-3">
+                <form action="" method="GET" class="d-flex position-relative">
+                    <input type="text" class="form-control product-search ps-5" name="question" id="input-search"
+                        value="{{ request()->question }}" placeholder="Cari...">
                     <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                    <select id="status-activity" name="sort_by" class="form-select ms-3">
+                        <option value="newest" {{ request()->sort_by == 'newest' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="oldest" {{ request()->sort_by == 'oldest' ? 'selected' : '' }}>Terlama</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary ms-3">Filter</button>
                 </form>
             </div>
-            <div class="col-12 col-md-6 col-lg-5 mb-3">
-                <select id="status-activity" class="form-select">
-                    <option value="">Terbaru</option>
-                    <option value="">Terlama</option>
-                </select>
-            </div>
         </div>
+
         <div class="col-12 col-md-auto mb-3">
             <button type="button" class="btn mb-1 btn-primary"
                 data-bs-toggle="modal" data-bs-target="#modal-import">

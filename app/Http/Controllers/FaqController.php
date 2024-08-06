@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\FaqInterface;
 use App\Models\Faq;
 use App\Http\Requests\StoreFaqRequest;
 use App\Http\Requests\UpdateFaqRequest;
+use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
@@ -19,9 +20,9 @@ class FaqController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $faqs = $this->faq->paginate();
+        $faqs = $this->faq->paginate($request);
         return view('admin.pages.faq.index', compact('faqs'));
     }
 
