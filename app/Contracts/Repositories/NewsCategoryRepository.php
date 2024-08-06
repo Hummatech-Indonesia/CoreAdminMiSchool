@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Models\NewsCategory;
+use Illuminate\Http\Request;
 
 class NewsCategoryRepository extends BaseRepository implements NewsCategoryInterface
 {
@@ -12,9 +13,21 @@ class NewsCategoryRepository extends BaseRepository implements NewsCategoryInter
         $this->model = $news_category;
     }
 
-    public function get(): mixed
+    public function get(Request $request): mixed
     {
-        return $this->model->query()->get();
+        return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->when($request->sort_by, function ($query) use ($request) {
+                // Menentukan arah pengurutan berdasarkan nilai sort_by
+                $sortDirection = $request->sort_by === 'oldest' ? 'asc' : 'desc'; // 'desc' untuk 'newest'
+                $query->orderBy('created_at', $sortDirection);
+            }, function ($query) {
+                // Jika sort_by tidak ada, urutkan berdasarkan terbaru (desc)
+                $query->orderBy('created_at', 'desc');
+            })
+            ->get();
     }
 
     public function store(array $data): mixed
