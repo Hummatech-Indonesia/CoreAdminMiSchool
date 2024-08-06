@@ -37,7 +37,7 @@ class NewsService
         return $data;
     }
 
-    public function update(News $newses, UpdateNewsRequest $request): array|bool
+    public function update(News $news, UpdateNewsRequest $request): array|bool
     {
         // Validasi data request.
         $data = $request->validated();
@@ -48,21 +48,21 @@ class NewsService
         // Jika ada file foto baru yang valid, simpan file tersebut.
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             // Hapus file image lama.
-            $this->remove($newses->image);
+            $this->remove($news->image);
             $data['image'] = $request->file('image')->store(UploadDiskEnum::NEWS->value, 'public');
         } else {
             // Pertahankan image lama jika tidak ada file baru.
-            $data['image'] = $newses->image;
+            $data['image'] = $news->image;
         }
 
         return $data;
     }
 
-    public function delete(News $newses)
+    public function delete(News $news)
     {
         // Hapus file foto jika ada.
-        if ($newses->image != null) {
-            $this->remove($newses->image);
+        if ($news->image != null) {
+            $this->remove($news->image);
         }
     }
 }

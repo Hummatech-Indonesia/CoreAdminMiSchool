@@ -24,7 +24,7 @@ class UpdateNewsRequest extends FormRequest
         return [
             'news_category_id' => 'required|exists:news_categories,id',
             'title' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg',
+            'image' => 'nullable|mimes:jpeg,png,jpg',
             'description' => 'required',
         ];
     }
@@ -35,7 +35,6 @@ class UpdateNewsRequest extends FormRequest
             'news_category_id.required' => 'Kategori berita harus diisi',
             'news_category_id.exists' => 'Kategori berita tidak ditemukan',
             'title.required' => 'Judul berita harus diisi',
-            'image.required' => 'Gambar berita harus diisi',
             'image.mimes' => 'Gambar berita harus berekstensi jpeg, png, atau jpg',
             'description.required' => 'Deskripsi berita harus diisi',
         ];

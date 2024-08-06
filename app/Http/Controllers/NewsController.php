@@ -70,20 +70,20 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNewsRequest $request, News $newse)
+    public function update(UpdateNewsRequest $request, News $news)
     {
-        $data = $this->newsService->update($newse, $request);
-        $this->news->update($newse->id, $data);
+        $data = $this->newsService->update($news, $request);
+        $this->news->update($news->id, $data);
         return redirect()->back()->with('success', 'Berita berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $newses)
+    public function destroy(News $news)
     {
-        $this->newsService->delete($newses);
-        $this->news->delete($newses->id);
+        $this->newsService->delete($news);
+        $this->news->delete($news->id);
         return redirect()->back()->with('success', 'Berita berhasil dihapus');
     }
 }

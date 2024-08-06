@@ -115,8 +115,8 @@
                             </button>
 
 
-                            <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium"
-                                data-bs-toggle="modal" data-bs-target="#modal-edit">
+                            <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium btn-delete"
+                                data-id="{{ $news->id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24">
                                     <path fill="currentColor"
