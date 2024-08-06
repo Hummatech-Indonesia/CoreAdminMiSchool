@@ -65,8 +65,8 @@
                         <span class="hide-menu">Daftar Sekolah</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+                <li class="sidebar-item {{ request()->routeIs('news-category.index') || request()->routeIs('news.index') || request()->routeIs('news.show') ? 'selected' : '' }}">
+                    <a class="sidebar-link has-arrow {{ request()->routeIs('news-category.index') || request()->routeIs('news.index') || request()->routeIs('news.show') ? 'active' : '' }}" href="#" aria-expanded="false">
                         <span class="d-flex">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -81,7 +81,7 @@
                         </span>
                         <span class="hide-menu">Berita</span>
                     </a>
-                    <ul aria-expanded="false" class="collapse first-level">
+                    <ul aria-expanded="false" class="collapse first-level {{ request()->routeIs('news-category.index') || request()->routeIs('news.index') || request()->routeIs('news.show') ? 'in' : '' }}">
                         <li class="sidebar-item">
                             <a href="{{ route('news-category.index') }}" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -91,7 +91,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('news.index') }}" class="sidebar-link">
+                            <a href="{{ route('news.index') }}" class="sidebar-link {{ request()->routeIs('news.index') || request()->routeIs('news.show') ? 'active' : '' }}">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
