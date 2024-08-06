@@ -22,7 +22,7 @@ class UpdateNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'news_category_id' => 'required|exists:news_categories,id,'.$this->id,
+            'news_category_id' => 'required|exists:news_categories,id',
             'title' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg',
             'description' => 'required',

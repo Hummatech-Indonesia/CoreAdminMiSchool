@@ -5,6 +5,10 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
 
+@if ($errors->any())
+@dd($errors)
+@endif
+
 @section('content')
     <div class="card bg-primary shadow-none position-relative overflow-hidden">
         <div class="card-body px-4 py-3">

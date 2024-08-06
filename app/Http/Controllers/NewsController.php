@@ -8,6 +8,7 @@ use App\Models\News;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Services\NewsService;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -55,7 +56,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        dd($news);
     }
 
     /**
@@ -69,11 +70,10 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNewsRequest $request, News $newses)
+    public function update(UpdateNewsRequest $request, News $newse)
     {
-        dd($request->all());
-        $data = $this->newsService->update($newses, $request);
-        $this->news->update($newses->id, $data);
+        $data = $this->newsService->update($newse, $request);
+        $this->news->update($newse->id, $data);
         return redirect()->back()->with('success', 'Berita berhasil diupdate');
     }
 
@@ -82,7 +82,7 @@ class NewsController extends Controller
      */
     public function destroy(News $newses)
     {
-        $this->newsService->delete($newses);  
+        $this->newsService->delete($newses);
         $this->news->delete($newses->id);
         return redirect()->back()->with('success', 'Berita berhasil dihapus');
     }
