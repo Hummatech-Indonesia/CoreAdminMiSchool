@@ -19,7 +19,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="" class="mb-2 pt-3">Thumbnail</label>
+                            <label for="" class="pt-3">Thumbnail</label>
+                            <div>
+                                <img class="mt-2 mb-2" id="previewImage" src="">
+                            </div>
                             <input class="form-control" type="file" name="image" id="formFile">
                             @error('image')
                                 <span class="text-danger">
