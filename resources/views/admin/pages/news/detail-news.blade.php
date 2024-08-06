@@ -36,11 +36,10 @@
 
     <div class="card shadow-none border">
         <div class="card-body">
-            <img src="{{ asset('admin_assets/dist/images/backgrounds/profilebg.jpg') }}" alt="Profile Background"
-                class="img-fluid rounded">
+            <img src="{{ asset('storage/'. $news->image) ?? asset('admin_assets/dist/images/backgrounds/profilebg.jpg') }}" class="img-fluid rounded">
             <h4 class="mt-3">{{ $news->title }}</h4>
             <div class="d-flex no-block align-items-center pt-3">
-                <span class="d-flex align-items-center ms-5">
+                <span class="d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="18" height="18"
                         viewBox="0 0 24 24">
                         <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -56,35 +55,7 @@
         </div>
         <hr>
         <div class="card-body">
-            <h4 class="mb-3">Title of the paragraph</h4>
-            <p class="mb-5">But you cannot figure out what it is or what it can do. MTA web directory is the simplest way
-                in which one
-                can bid on a link, or a few links if they wish to do so. The link
-                directory on MTA displays all of the links it currently has, and does so in alphabetical order, which makes
-                it much easier for someone to find what they are looking for if it is
-                something specific and they do not want to go through all the other sites and links as well. It allows you
-                to start your bid at the bottom and slowly work your way to the top
-                of the list.
-            </p>
-            <div class="row mb-5">
-                <div class="col-12 col-md-6 mb-3 mb-md-0">
-                    <img src="{{ asset('admin_assets/dist/images/backgrounds/sd.png') }}" alt="Profile Background"
-                        class="img-fluid rounded" style="max-width: 100%;">
-                </div>
-                <div class="col-12 col-md-6">
-                    <img src="{{ asset('admin_assets/dist/images/backgrounds/sd.png') }}" alt="Profile Background"
-                        class="img-fluid rounded" style="max-width: 100%;">
-                </div>
-            </div>
-
-            <p>
-                Gigure out what it is or what it can do. MTA web directory is the simplest way in which one can bid on a
-                link, or a few links if they wish to do so. The link directory on MTA
-                displays all of the links it currently has, and does so in alphabetical order, which makes it much easier
-                for someone to find what they are looking for if it is something
-                specific and they do not want to go through all the other sites and links as well. It allows you to start
-                your bid at the bottom and slowly work your way to the top of the
-            </p>
+            <div>{!! $news->description !!}</div>
         </div>
     </div>
 @endsection
