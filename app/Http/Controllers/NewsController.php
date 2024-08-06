@@ -26,10 +26,10 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $newses = $this->news->get();
-        $categories = $this->newsCategory->get();
+        $categories = $this->newsCategory->get($request);
         return view('admin.pages.news.index', compact('newses', 'categories'));
     }
 
