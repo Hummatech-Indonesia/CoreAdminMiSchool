@@ -44,11 +44,13 @@
 
         <div class="container">
             <div class="bred_text">
-                <h1 class="text-primary">Berita</h1>
+                <h1 class="text-primary">E-Learning</h1>
                 <ul>
                     <li><a href="/">Beranda</a></li>
                     <li><span>»</span></li>
                     <li><a href="news">Berita</a></li>
+                    <li><span>»</span></li>
+                    <li><a href="news">E-Learning</a></li>
                 </ul>
             </div>
         </div>
