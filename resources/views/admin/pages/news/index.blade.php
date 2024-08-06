@@ -87,7 +87,7 @@
                             {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}
                         </td>
                         <td>
-                            <a href="/admin/news-detail" type="button" class="btn mb-1 btn-primary btn-sm fs-2 font-medium">
+                            <a href="{{ route('news.show', $news->slug) }}" type="button" class="btn mb-1 btn-primary btn-sm fs-2 font-medium">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                                     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="1.5">

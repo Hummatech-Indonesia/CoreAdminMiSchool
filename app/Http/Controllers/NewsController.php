@@ -54,9 +54,10 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show($slug)
     {
-        dd($news);
+        $news = $this->news->showWithSlug($slug);
+        return view('admin.pages.news.detail-news', compact('news'));
     }
 
     /**

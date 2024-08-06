@@ -43,7 +43,8 @@ Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('s
 Route::get('category', fn() => view('admin.pages.news.category.index'))->name('category.index');
 
 Route::resource('news-category', NewsCategoryController::class);
-Route::resource('admin/news', NewsController::class);
+Route::resource('admin/news', NewsController::class)->except(['show']);
+Route::get('admin/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 require_once __DIR__ . '/landing.php';
 

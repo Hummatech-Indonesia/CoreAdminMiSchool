@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Landingpage\NewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('about-us', function(){
@@ -10,9 +11,7 @@ Route::get('news-detail', function(){
     return view('landing.news.detail');
 })->name('news-detail');
 
-Route::get('news', function(){
-    return view('landing.news.news');
-})->name('news');
+Route::get('news', [NewsController::class, 'index'])->name('news');
 
 Route::get('testimoni', function(){
     return view('landing.testimoni');
