@@ -20,11 +20,9 @@ class NewsCategoryRepository extends BaseRepository implements NewsCategoryInter
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })
             ->when($request->sort_by, function ($query) use ($request) {
-                // Menentukan arah pengurutan berdasarkan nilai sort_by
-                $sortDirection = $request->sort_by === 'oldest' ? 'asc' : 'desc'; // 'desc' untuk 'newest'
+                $sortDirection = $request->sort_by === 'oldest' ? 'asc' : 'desc';
                 $query->orderBy('created_at', $sortDirection);
             }, function ($query) {
-                // Jika sort_by tidak ada, urutkan berdasarkan terbaru (desc)
                 $query->orderBy('created_at', 'desc');
             })
             ->get();
