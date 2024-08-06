@@ -99,6 +99,27 @@
         }
     }
 
+    .interface_section .owl-item.center .screen_frame_img img {
+        border: 3px solid var(--primary);
+    }
+
+    .owl-carousel .owl-dots button.active {
+        background-color: var(--primary);
+    }
+
+    .pricing_section .toggle_block span.month.active {
+        color: var(--primary);
+    }
+
+    .pricing_section .toggle_block .tog_block .tog_btn {
+        background-color: var(--primary);
+    }
+
+    .what_coustomer_says .review_summery p,
+    .what_coustomer_says .review_summery p a {
+        color: var(--primary);
+    }
+
 </style>
 @endsection
 
@@ -715,23 +736,21 @@
         <div class="faq_panel">
             <div class="accordion" id="accordionExample">
                 @forelse ($faqs as $key => $faq)
-                    <div class="card" data-aos="fade-up" data-aos-duration="1500">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button type="button" class="btn btn-link {{ $key === 0 ? 'active' : '' }}" data-toggle="collapse"
-                                    data-target="#collapseOne">
-                                    <i class="icon_faq icofont-plus"></i>{{ $faq['question'] }}</button>
-                            </h2>
-                        </div>
-                        <div id="collapseOne" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="headingOne"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                <p>{{ $faq['answer'] }}</p>
-                            </div>
+                <div class="card" data-aos="fade-up" data-aos-duration="1500">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button type="button" class="btn btn-link {{ $key === 0 ? 'active' : '' }}" data-toggle="collapse" data-target="#collapseOne">
+                                <i class="icon_faq icofont-plus"></i>{{ $faq['question'] }}</button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>{{ $faq['answer'] }}</p>
                         </div>
                     </div>
+                </div>
                 @empty
-                    
+
                 @endforelse
             </div>
         </div>

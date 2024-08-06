@@ -196,32 +196,32 @@
                             <h3>Categories</h3>
                             <ul>
                                 <li>
-                                    <a href="{{ route('news.category') }}" class="cat"><i class="icofont-folder-open"></i> Software</a>
+                                    <a href="{{ route('news-category.index') }}" class="cat"><i class="icofont-folder-open"></i> Software</a>
                                     <span>(15)</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.category') }}" class="cat"><i class="icofont-folder-open"></i> Technology</a>
+                                    <a href="{{ route('news-category.index') }}" class="cat"><i class="icofont-folder-open"></i> Technology</a>
                                     <span>(12)</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.category') }}" class="cat"><i class="icofont-folder-open"></i> Business</a>
+                                    <a href="{{ route('news-category.index') }}" class="cat"><i class="icofont-folder-open"></i> Business</a>
                                     <span>(09)</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.category') }}" class="cat"><i class="icofont-folder-open"></i> Web
+                                    <a href="{{ route('news-category.index') }}" class="cat"><i class="icofont-folder-open"></i> Web
                                         Development</a>
                                     <span>(25)</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.category') }}" class="cat"><i class="icofont-folder-open"></i> Android</a>
+                                    <a href="{{ route('news-category.index') }}" class="cat"><i class="icofont-folder-open"></i> Android</a>
                                     <span>(19)</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.category') }}" class="cat"><i class="icofont-folder-open"></i> iOS</a>
+                                    <a href="{{ route('news-category.index') }}" class="cat"><i class="icofont-folder-open"></i> iOS</a>
                                     <span>(08)</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.category') }}" class="cat"><i class="icofont-folder-open"></i> Watch</a>
+                                    <a href="{{ route('news-category.index') }}" class="cat"><i class="icofont-folder-open"></i> Watch</a>
                                     <span>(13)</span>
                                 </li>
                             </ul>
