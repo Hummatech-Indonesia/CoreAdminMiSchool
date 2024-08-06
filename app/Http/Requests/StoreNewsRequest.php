@@ -23,7 +23,7 @@ class StoreNewsRequest extends FormRequest
     {
         return [
             'news_category_id' => 'required|exists:news_categories,id',
-            'title' => 'required',
+            'title' => 'required|max:255',
             'image' => 'required|mimes:jpeg,png,jpg',
             'description' => 'required',
         ];
@@ -35,6 +35,7 @@ class StoreNewsRequest extends FormRequest
             'news_category_id.required' => 'Kategori berita harus diisi',
             'news_category_id.exists' => 'Kategori berita tidak ditemukan',
             'title.required' => 'Judul berita harus diisi',
+            'title.max' => 'Judul berita tidak boleh lebih dari :max karakter',
             'image.required' => 'Gambar berita harus diisi',
             'image.mimes' => 'Gambar berita harus berekstensi jpeg, png, atau jpg',
             'description.required' => 'Deskripsi berita harus diisi',
