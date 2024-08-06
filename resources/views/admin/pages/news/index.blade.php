@@ -81,10 +81,10 @@
                     <div class="badge bg-light-primary text-primary">{{ $news->newsCategory->name }}</div>
                 </td>
                 <td>
-                    {{ Str::limit($news->title, 100) }}
+                    {{ Str::limit($news->title, 50) }}
                 </td>
                 <td>
-                    {!! Str::limit(strip_tags($news->description), 150) !!}
+                    {!! Str::limit(strip_tags($news->description), 50) !!}
                 </td>
                 <td>
                     {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}
