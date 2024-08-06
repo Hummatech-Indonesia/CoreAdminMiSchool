@@ -6,7 +6,7 @@
 @endsection
 
 @if ($errors->any())
-@dd($errors)
+{{-- @dd($errors) --}}
 @endif
 
 @section('content')
