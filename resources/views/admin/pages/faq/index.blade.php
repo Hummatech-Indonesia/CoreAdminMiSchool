@@ -1,19 +1,27 @@
 @extends('admin.layouts.app')
-
+@section('style')
+    <style>
+        .breadcrumb-item+.breadcrumb-item::before{
+            color: white;
+        }
+    </style>
+@endsection
 @section('content')
-    <div class="card bg-light-info shadow-none position-relative overflow-hidden">
+    <div class="card bg-primary shadow-none position-relative overflow-hidden">
         <div class="card-body px-4 py-3">
             <div class="row align-items-center">
                 <div class="col-9">
-                    <h4 class="fw-semibold mb-8">FAQ</h4>
+                    <h4 class="fw-semibold mb-8 text-light" style="color: white;">FAQ</h4>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a class="text-muted text-decoration-none" href="index-2.html">Home</a>
+                        <ol class="breadcrumb" style="color: white;">
+                            <li class="breadcrumb-item" style="color: white;">
+                                <a class="text-decoration-none" style="color: white;" href="index-2.html">Home</a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">FAQ</li>
+                            <li class="breadcrumb-item" aria-current="page" style="color: white;">FAQ</li>
                         </ol>
                     </nav>
                 </div>
+
                 <div class="col-3">
                     <div class="text-center mb-n5">
                         <img src="{{ asset('admin_assets/dist/images/breadcrumb/ChatBc.png') }}" alt=""
@@ -26,20 +34,20 @@
 
     <div class="d-flex flex-wrap justify-content-between align-items-center">
         <div class="d-flex flex-wrap">
-            <div class="col-12 col-md-6 col-lg-6 mb-3 me-3">
-                <form action="" class="position-relative">
-                    <input type="text" class="form-control product-search ps-5" id="input-search"
-                        placeholder="Cari tim...">
+            <div class="col-12 col-md-6 col-lg-12 mb-3 me-3">
+                <form action="" method="GET" class="d-flex position-relative">
+                    <input type="text" class="form-control product-search ps-5" name="question" id="input-search"
+                        value="{{ request()->question }}" placeholder="Cari...">
                     <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                    <select id="status-activity" name="sort_by" class="form-select ms-3">
+                        <option value="newest" {{ request()->sort_by == 'newest' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="oldest" {{ request()->sort_by == 'oldest' ? 'selected' : '' }}>Terlama</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary ms-3">Filter</button>
                 </form>
             </div>
-            <div class="col-12 col-md-6 col-lg-5 mb-3">
-                <select id="status-activity" class="form-select">
-                    <option value="">Terbaru</option>
-                    <option value="">Terlama</option>
-                </select>
-            </div>
         </div>
+
         <div class="col-12 col-md-auto mb-3">
             <button type="button" class="btn mb-1 btn-primary"
                 data-bs-toggle="modal" data-bs-target="#modal-import">
