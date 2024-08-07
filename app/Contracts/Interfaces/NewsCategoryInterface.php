@@ -13,5 +13,5 @@ use Illuminate\Http\Request;
 interface NewsCategoryInterface extends StoreInterface, ShowInterface, UpdateInterface, DeleteInterface, PaginateInterface
 {
     public function get(Request $request): mixed;
-
+    public function all(): mixed;
 }

@@ -23,7 +23,7 @@ class NewsController extends Controller
         $latest = $this->news->latest();
         $recentPosts = $this->news->recentPosts();
         $otherNews = $this->news->otherNews();   
-        $categories = $this->newsCategory->get();
+        $categories = $this->newsCategory->all();
         return view('landing.news.news', compact('latest', 'recentPosts', 'otherNews', 'categories'));
     }
 

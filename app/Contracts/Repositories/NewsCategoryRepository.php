@@ -52,4 +52,9 @@ class NewsCategoryRepository extends BaseRepository implements NewsCategoryInter
     {
         return $this->model->query()->paginate(10);
     }
+
+    public function all(): mixed
+    {
+        return $this->model->get();
+    }
 }
