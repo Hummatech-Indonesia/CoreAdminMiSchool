@@ -16,6 +16,10 @@
         margin-top: 0px;
     }
 
+    .owl-carousel .owl-dots button.active {
+        background-color: var(--primary);
+    }
+
 </style>
 @endsection
 
