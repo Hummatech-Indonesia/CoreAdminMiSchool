@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <title>Mischool Admin | Login</title>
+    <!--  Title -->
+    <title>Mischool | Login</title>
+    <!--  Required Meta Tag -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="handheldfriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+    <meta name="description" content="Mordenize">
+    <meta name="author" content="">
+    <meta name="keywords" content="Mordenize">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--  Favicon -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo/logo-M.png') }}">
+    <!-- Core Css -->
+    <style>
+
+    </style>
     <link rel="stylesheet" href="https://school.mischool.id/assets/dist/css/app.css">
-    <link id="themeColors" rel="stylesheet" href="https://school.mischool.id/assets/dist/css/style.min.css">
+    <link id="themeColors" rel="stylesheet" href="{{ asset('admin_assets/dist/css/style.min.css') }}">
 </head>
 <body>
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
@@ -82,6 +96,7 @@
                 }
             });
         });
+
     </script>
 </body>
 </html>
