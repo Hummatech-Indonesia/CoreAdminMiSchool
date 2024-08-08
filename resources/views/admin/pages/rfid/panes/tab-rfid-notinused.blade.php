@@ -74,3 +74,6 @@
         </table>
     </div>
 </div>
+<div class="pagination justify-content-end mb-0">
+    <x-paginate-component :paginator="$notUsedRfids" />
+</div>

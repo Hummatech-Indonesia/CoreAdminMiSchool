@@ -68,7 +68,7 @@ class RfidRepository extends BaseRepository implements RfidInterface
             $query->oldest();
         }) ->when($request->status, function($query) use ($request) {
             $query->where('status', $request->status);
-        })->get();
+        })->paginate(10, ['*'], 'usedPage', $request->usedPage);
     }
 
     public function notUsed(Request $request): mixed
@@ -83,7 +83,7 @@ class RfidRepository extends BaseRepository implements RfidInterface
             $query->oldest();
         }) ->when($request->status, function($query) use ($request) {
             $query->where('status', $request->status);
-        })->get();
+        })->paginate(10, ['*'], 'unusedPage', $request->unusedPage);
     }
 
     public function search(Request $request): mixed
