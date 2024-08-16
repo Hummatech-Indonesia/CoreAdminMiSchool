@@ -54,70 +54,51 @@
         </div>
     </div>
 
-    <div class="table-responsive rounded-2 mb-4">
-        <table class="table border text-nowrap text-center customize-table mb-0 align-middle">
-            <thead class="text-dark fs-4">
-                <tr class="">
-                    <th class="fs-4 fw-semibold mb-0">No</th>
-                    <th class="fs-4 fw-semibold mb-0">Kategori</th>
-                    <th class="fs-4 fw-semibold mb-0">Dipakai</th>
-                    <th class="fs-4 fw-semibold mb-0">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($newsCategories as $newsCategory)
-                    <tr>
-                        <td>
-                            {{ $loop->iteration }}
-                        </td>
-                        <td>
-                            {{ $newsCategory->name }}
-                        </td>
-                        <td>
-                            {{ $newsCategory->news->count() }}
-                        </td>
-                        <td>
-                            <button type="button" class="btn mb-1 me-2 btn-warning btn-sm fs-2 font-medium btn-edit"
-                                data-id="{{ $newsCategory->id }}" data-name="{{ $newsCategory->name }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                    <g fill="none">
-                                        <path stroke="currentColor"
-                                            d="m5.93 19.283l.021-.006l2.633-.658l.045-.01c.223-.056.42-.105.599-.207c.179-.101.322-.245.484-.407l.033-.033l7.194-7.194l.024-.024c.313-.313.583-.583.77-.828c.2-.263.353-.556.353-.916s-.152-.653-.353-.916c-.187-.245-.457-.515-.77-.828l-.024-.024l-.353.354l.353-.354l-.171-.171l-.024-.024c-.313-.313-.583-.583-.828-.77c-.263-.2-.556-.353-.916-.353s-.653.152-.916.353c-.245.187-.515.457-.828.77l-.024.024l-7.194 7.194a7.24 7.24 0 0 1-.033.032c-.162.163-.306.306-.407.485c-.102.18-.15.376-.206.6l-.011.044l-.664 2.654a12.99 12.99 0 0 0-.007.027a3.72 3.72 0 0 0-.095.464c-.015.155-.011.416.198.626c.21.21.47.213.625.197a3.43 3.43 0 0 0 .492-.101Z" />
-                                        <path fill="currentColor" d="m12.5 7.5l3-2l3 3l-2 3z" />
-                                    </g>
-                                </svg>
-                            </button>
-
-                            <button type="button" class="btn mb-1 btn-danger btn-sm fs-2 font-medium btn-delete"
-                                data-id="{{ $newsCategory->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+    <div class="row">
+        @forelse ($newsCategories as $newsCategory)
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text mb-0">Kategori:</p>
+                        <h5 class="card-title pt-2 mb-3"><b>{{ $newsCategory->name }}</b></h5>
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Jumlah Digunakan:</h6>
+                            <h6>{{ $newsCategory->news->count() }}X Digunakan</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-warning w-100 btn-edit" data-id="{{ $newsCategory->id }}"
+                                data-name="{{ $newsCategory->name }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    class="me-1">
                                     <path fill="currentColor"
-                                        d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1M20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2M10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1" />
+                                        d="m7 17.013l4.413-.015l9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583zM18.045 4.458l1.589 1.583l-1.597 1.582l-1.586-1.585zM9 13.417l6.03-5.973l1.586 1.586l-6.029 5.971L9 15.006z" />
+                                    <path fill="currentColor"
+                                        d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01c-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2" />
                                 </svg>
-                            </button>
+                                Edit</button>
+                            <button type="button" class="btn btn-danger w-100 ms-2 btn-delete"
+                                data-id="{{ $newsCategory->id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" class="me-1">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        d="M9.5 14.5v-3m5 3v-3M3 6.5h18v0c-1.404 0-2.107 0-2.611.337a2 2 0 0 0-.552.552C17.5 7.893 17.5 8.596 17.5 10v5.5c0 1.886 0 2.828-.586 3.414s-1.528.586-3.414.586h-3c-1.886 0-2.828 0-3.414-.586S6.5 17.386 6.5 15.5V10c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552C5.107 6.5 4.404 6.5 3 6.5zm6.5-3s.5-1 2.5-1s2.5 1 2.5 1" />
+                                </svg>
 
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="4">
-                            <div class="d-flex flex-column justify-content-center align-items-center">
-                                <img src="{{ asset('admin_assets/dist/images/empty/no-data.png') }}" alt=""
-                                    width="300px">
-                                <p class="fs-5 text-dark text-center mt-2">
-                                    Kategori belum ditambahkan
-                                </p>
-                            </div>
-                        </td>
-
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-        <div class="pagination justify-content-end mb-0">
-            {{-- <x-paginate-component :paginator="$rfids" /> --}}
-        </div>
+                                Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="{{ asset('admin_assets/dist/images/empty/no-data.png') }}" alt="" width="300px">
+                <p class="fs-5 text-dark text-center mt-2">
+                    Kategori belum ditambahkan
+                </p>
+            </div>
+        @endforelse
     </div>
+
 
     <!-- modal tambah -->
     @include('admin.pages.news.category.widgets.modal-create')
