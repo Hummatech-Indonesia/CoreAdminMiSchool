@@ -36,7 +36,7 @@
                         <img src="{{ asset('admin_assets/dist/images/ilustrations/file1.png') }}" alt="" class="img-fluid w-20">
                         <div class="d-flex flex-column ms-3">
                             <h6 class="mb-0" style="font-size: 16px;"><b>Total Kartu RFID</b></h6>
-                            <h6 class="mt-2 text-primary" style="font-size: 28px;">56</h6>
+                            <h6 class="mt-2 text-primary" style="font-size: 28px;">{{ $countrfid }}</h6>
                         </div>
                     </div>
                 </div>

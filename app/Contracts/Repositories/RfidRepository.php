@@ -19,6 +19,11 @@ class RfidRepository extends BaseRepository implements RfidInterface
         return $this->model->query()->get();
     }
 
+    public function count(): mixed
+    {
+        return $this->model->query()->count();
+    }
+
     public function where(mixed $data): bool
     {
         return $this->model->query()->where('rfid', $data)->exists();

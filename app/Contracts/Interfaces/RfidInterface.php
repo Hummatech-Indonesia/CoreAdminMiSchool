@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 interface RfidInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface, PaginateInterface, WhereInterface
 {
+    public function count(): mixed;
     public function used(Request $request): mixed;
     public function notUsed(Request $request): mixed;
     public function search(Request $request): mixed;
