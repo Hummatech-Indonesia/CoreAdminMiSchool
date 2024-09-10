@@ -49,7 +49,7 @@
                         <img src="{{ asset('admin_assets/dist/images/ilustrations/file2.png') }}" alt="" class="img-fluid w-20">
                         <div class="d-flex flex-column ms-3">
                             <h6 class="mb-0" style="font-size: 16px;"><b>Kartu Digunakan</b></h6>
-                            <h6 class="mt-2 text-success" style="font-size: 28px;">{{ $usedRfids->count() }}</h6>
+                            <h6 class="mt-2 text-success" style="font-size: 28px;">{{ $usecountrfid }}</h6>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         <img src="{{ asset('admin_assets/dist/images/ilustrations/file3.png') }}" alt="" class="img-fluid w-20">
                         <div class="d-flex flex-column ms-3">
                             <h6 class="mb-0" style="font-size: 16px;"><b>Kartu Belum Digunakan</b></h6>
-                            <h6 class="mt-2 text-danger" style="font-size: 28px;">{{ $notUsedRfids->count() }}</h6>
+                            <h6 class="mt-2 text-danger" style="font-size: 28px;">{{ $notusecountrfid }}</h6>
                         </div>
                     </div>
                 </div>
