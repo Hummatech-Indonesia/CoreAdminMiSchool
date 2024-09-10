@@ -22,7 +22,7 @@ class RfidRepository extends BaseRepository implements RfidInterface
     public function count(mixed $query): mixed
     {
         $result = $this->model->query();
-        $query == 'used' ? $result->where('status', RfidStatusEnum::USED) : ( $query == 'notuses' ? $result->where('status', RfidStatusEnum::NOTUSED) : $result);
+        $query == 'used' ? $result->where('status', RfidStatusEnum::USED) : ($query == 'notused' ? $result->where('status', RfidStatusEnum::NOTUSED) : $result);
         return $result->count();
     }
 
