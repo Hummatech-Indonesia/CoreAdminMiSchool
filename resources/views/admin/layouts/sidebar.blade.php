@@ -47,7 +47,8 @@
                         request()->routeIs('school.create') ||
                         request()->routeIs('school.show') ||
                         request()->routeIs('school.active') ||
-                        request()->routeIs('school.nonactive') ? 'active' : '' }}" href="{{ route('school.index') }}" aria-expanded="false">
+                        request()->routeIs('school.nonactive') ||
+                        request()->routeIs('school.edit') ? 'active' : '' }}" href="{{ route('school.index') }}" aria-expanded="false">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
