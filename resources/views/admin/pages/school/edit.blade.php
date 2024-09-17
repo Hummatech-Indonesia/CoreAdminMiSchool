@@ -282,7 +282,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Web (Opsional)</h6>
+                                            <h6>Sub domain sekolah ( contoh : school.mischool.com )<span class="text-danger">*</span></h6>
                                             <input type="text" name="website" value="{{ old('website', $school->website) }}"
                                                 class="form-control mb-3" placeholder="Masukkan website sekolah">
                                             @error('website')
