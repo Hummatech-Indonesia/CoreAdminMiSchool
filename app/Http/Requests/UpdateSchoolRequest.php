@@ -35,7 +35,7 @@ class UpdateSchoolRequest extends FormRequest
             'address' => 'required',
             'head_master' => 'required|max:255',
             'nip' => 'nullable|max:18',
-            'website' => 'nullable|url|max:255',
+            'website' => 'nullable|max:255',
             'description' => 'nullable',
             'active' => 'nullable',
             'type' => 'required',
