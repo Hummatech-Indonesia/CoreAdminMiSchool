@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\SchoolEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,6 +12,7 @@ class School extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    public $casts = [SchoolEnum::class];
 
     /**
      * Get the province that owns the School

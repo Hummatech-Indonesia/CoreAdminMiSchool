@@ -25,7 +25,7 @@ class UpdateSchoolRequest extends FormRequest
             'name' => 'required|max:255',
             'logo' => 'nullable|mimes:png,jpg,jpeg',
             'email' => 'required|email|max:255',
-            'password' => 'required|min:8|max:255',
+            'password' => 'nullable|min:8|max:255',
             'npsn' => 'required|max:8',
             'phone_number' => 'required|max:15',
             'province_id' => 'required|exists:provinces,id',

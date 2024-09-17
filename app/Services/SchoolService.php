@@ -53,7 +53,9 @@ class SchoolService
         // Validasi data request.
         $data = $request->validated();
         // Hash password baru.
-        $data['password'] = Hash::make($data['password']);
+        if ($request->has('password')) {
+            $data['password'] = Hash::make($data['password']);
+        }
         // Buat slug baru dari nama sekolah.
         $data['slug'] = Str::slug($data['name']);
 
@@ -61,9 +63,9 @@ class SchoolService
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
             // Hapus file logo lama.
             $this->remove($school->logo);
-            $compressedImage = $this->compressImage($data['slug'], $request->hasFile('logo'));
-            // $data['logo'] = $request->file('logo')->store(UploadDiskEnum::SCHOOL->value, 'public');
-            $data['logo'] = $this->upload(UploadDiskEnum::SCHOOL->value, $compressedImage);
+            // $compressedImage = $this->compressImage($data['slug'], $request->hasFile('logo'));
+            $data['logo'] = $request->file('logo')->store(UploadDiskEnum::SCHOOL->value, 'public');
+            // $data['logo'] = $this->upload(UploadDiskEnum::SCHOOL->value, $compressedImage);
         } else {
             // Pertahankan logo lama jika tidak ada file baru.
             $data['logo'] = $school->logo;

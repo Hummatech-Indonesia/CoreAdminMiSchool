@@ -104,7 +104,7 @@ class SchoolController extends Controller
         $provinces = $this->province->get();
         $cities = $this->city->get();
         $subdistricts = $this->subdistrict->get();
-        return view('', compact('school', 'provinces', 'cities', 'subdistricts'));
+        return view('admin.pages.school.edit', compact('school', 'provinces', 'cities', 'subdistricts'));
     }
 
     /**
