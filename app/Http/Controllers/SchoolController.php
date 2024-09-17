@@ -67,7 +67,7 @@ class SchoolController extends Controller
     {
         $school = $this->school->showWithSlug($slug);
         $apiUrl = $school->web . '/api/school/detail/' . $slug;
-        $response = Http::get(config($apiUrl));
+        $response = Http::get($apiUrl);
 
         if ($response->successful()) {
             $data = $response->json();
