@@ -27,24 +27,26 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('school', SchoolController::class);
-Route::patch('school/{school}/enable', [SchoolController::class, 'active'])->name('school.active');
-Route::patch('school/{school}/disable', [SchoolController::class, 'nonactive'])->name('school.nonactive');
-Route::resource('rfid' ,RfidController::class)->except(['create']);
-Route::resource('faq', FaqController::class);
-Route::put('rfid-create', [RfidController::class, 'create'])->name('rfid.create');
-
-Route::post('send-contact-us', [ContactUsController::class, 'store'])->name('contactus.store');
-
-Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
-Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');
-Route::get('category', fn() => view('admin.pages.news.category.index'))->name('category.index');
-
-Route::resource('news-category', NewsCategoryController::class);
-Route::resource('admin/news', NewsController::class)->except(['show']);
-Route::get('admin/news/{slug}', [NewsController::class, 'show'])->name('news.show');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::resource('school', SchoolController::class);
+    Route::patch('school/{school}/enable', [SchoolController::class, 'active'])->name('school.active');
+    Route::patch('school/{school}/disable', [SchoolController::class, 'nonactive'])->name('school.nonactive');
+    Route::resource('rfid' ,RfidController::class)->except(['create']);
+    Route::resource('faq', FaqController::class);
+    Route::put('rfid-create', [RfidController::class, 'create'])->name('rfid.create');
+    
+    Route::post('send-contact-us', [ContactUsController::class, 'store'])->name('contactus.store');
+    
+    Route::get('get-cities', [CityController::class, 'show'])->name('city.show');
+    Route::get('get-sub-districts', [SubDistrictController::class, 'show'])->name('sub-district.show');
+    Route::get('category', fn() => view('admin.pages.news.category.index'))->name('category.index');
+    
+    Route::resource('news-category', NewsCategoryController::class);
+    Route::resource('admin/news', NewsController::class)->except(['show']);
+    Route::get('admin/news/{slug}', [NewsController::class, 'show'])->name('news.show');
+});
 
 require_once __DIR__ . '/landing.php';
 
