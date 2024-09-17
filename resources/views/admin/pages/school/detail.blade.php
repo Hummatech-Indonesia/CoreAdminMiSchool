@@ -19,7 +19,7 @@
                                         </div>
                                         <div>
                                             <h5 class="mb-1">Tahun Ajaran</h5>
-                                            <h5>belum di fetch</h5>
+                                            <h5>{{ $school_year }}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="bg-light-primary text-primary d-inline-block px-3 py-1 fs-8 rounded">
-                            belum di fetch
+                            {{ $teacher }}
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="bg-light-warning text-warning d-inline-block px-3 py-1 fs-8 rounded">
-                            belum di fetch
+                            {{ $classroom }}
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                             </div>
                         </div>
                         <div class="bg-light-success text-success d-inline-block px-3 py-1 fs-8 rounded">
-                            belum di fetch
+                            {{ $extracurricular }}
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                         <div class="bg-light-danger text-danger d-inline-block px-3 py-1 fs-8 rounded">
-                            belum di fetch
+                            {{ $student }}
                         </div>
                     </div>
                 </div>
@@ -175,22 +175,22 @@
                         <div class="rfid-container d-flex flex-wrap justify-content-center justify-content-md-between mx-md-5">
                             <div class="rfid-item mb-3 text-center">
                                 <div class="bg-light-primary text-primary d-inline-block px-4 py-4 fs-8 rounded fixed-size-div">
-                                    <b>belum di fetch</b>
+                                    <b>{{ $rfid }}</b>
                                 </div>
                                 <h5>Jumlah RFID</h5>
                             </div>
                             <div class="rfid-item mb-3 text-center">
                                 <div class="bg-light-success text-success d-inline-block px-4 py-4 fs-8 rounded fixed-size-div">
-                                    <b>belum di fetch</b>
+                                    <b>{{ $rfid }}</b>
                                 </div>
                                 <h5>RFID Aktif</h5>
                             </div>
-                            <div class="rfid-item mb-3 text-center">
+                            {{-- <div class="rfid-item mb-3 text-center">
                                 <div class="bg-light-danger text-danger d-inline-block px-4 py-4 fs-8 rounded fixed-size-div">
                                     <b>belum di fetch</b>
                                 </div>
                                 <h5>RFID Tidak Aktif</h5>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

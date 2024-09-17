@@ -39,7 +39,7 @@ class SchoolRepository extends BaseRepository implements SchoolInterface
     {
         return $this->model->query()->where('slug', $slug)->firstOrFail();
     }
-    
+
     /**
      * Mengupdate data sekolah berdasarkan ID.
      *
@@ -79,5 +79,10 @@ class SchoolRepository extends BaseRepository implements SchoolInterface
             $query->where('name', 'LIKE', '%' . $request->name . '%');
         })
         ->paginate(10);
+    }
+
+    public function check_email(mixed $email): mixed
+    {
+        return $this->model->query()->where('email', $email)->first();
     }
 }

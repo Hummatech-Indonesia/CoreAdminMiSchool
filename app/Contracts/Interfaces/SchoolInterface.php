@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 interface SchoolInterface extends GetInterface, StoreInterface, ShowWithSlugInterface, UpdateInterface, DeleteInterface, SearchInterface
 {
     public function where(mixed $data, Request $request): mixed;
+    public function check_email(mixed $email): mixed;
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSchoolRequest;
 use App\Traits\UploadTrait;
 use App\Http\Requests\UpdateSchoolRequest;
 use App\Models\School;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -37,6 +38,13 @@ class SchoolService
             $data['logo'] = $request->file('logo')->store(UploadDiskEnum::SCHOOL->value, 'public');
             // $data['logo'] = $this->upload(UploadDiskEnum::SCHOOL->value, $compressedImage);
         }
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+        ]);
+
         return $data;
     }
 

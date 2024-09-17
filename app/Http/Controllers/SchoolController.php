@@ -11,6 +11,7 @@ use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
 use App\Services\SchoolService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class SchoolController extends Controller
 {
@@ -65,7 +66,33 @@ class SchoolController extends Controller
     public function show($slug)
     {
         $school = $this->school->showWithSlug($slug);
-        return view('admin.pages.school.detail', compact('school'));
+        $apiUrl = $school->web . '/api/school/detail/' . $slug;
+        $response = Http::get(config($apiUrl));
+
+        if ($response->successful()) {
+            $data = $response->json();
+
+            $teacher = $data['data']['teacher'];
+            $classroom = $data['data']['classroom'];
+            $extracurricular = $data['data']['extracurricular'];
+            $student = $data['data']['student'];
+            $rfid = $data['data']['rfid'];
+            $school_year = $data['data']['school_year'];
+
+            return view('admin.pages.school.detail', compact(
+                'school', 'teacher', 'classroom', 'extracurricular', 'student', 'rfid', 'school_year'));
+        } else {
+
+            $teacher = '0';
+            $classroom = '0';
+            $extracurricular = '0';
+            $student = '0';
+            $rfid = '0';
+            $school_year = '0';
+
+            return view('admin.pages.school.detail', compact(
+                'school', 'teacher', 'classroom', 'extracurricular', 'student', 'rfid', 'school_year'));
+        }
     }
 
     /**
@@ -89,7 +116,7 @@ class SchoolController extends Controller
         $this->school->update($school->id, $data);
         return to_route('school.index')->with('success', 'Berhasil memperbarui sekolah');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
