@@ -85,4 +85,9 @@ class SchoolRepository extends BaseRepository implements SchoolInterface
     {
         return $this->model->query()->where('email', $email)->first();
     }
+
+    public function pluck_subdomain(): mixed
+    {
+        return $this->model->query()->get()->pluck('website')->toArray();
+    }
 }

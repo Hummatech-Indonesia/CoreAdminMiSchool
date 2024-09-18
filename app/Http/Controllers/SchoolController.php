@@ -66,7 +66,7 @@ class SchoolController extends Controller
     public function show($slug)
     {
         $school = $this->school->showWithSlug($slug);
-        $apiUrl = $school->web . '/api/school/detail/' . $slug;
+        $apiUrl = $school->website . '/api/school/detail/' . $slug;
         $response = Http::get($apiUrl);
 
         if ($response->successful()) {

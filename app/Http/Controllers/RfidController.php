@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\RfidInterface;
+use App\Contracts\Interfaces\SchoolInterface;
 use App\Enums\RfidStatusEnum;
 use App\Models\Rfid;
 use App\Http\Requests\StoreRfidRequest;
@@ -13,9 +14,11 @@ use Illuminate\Support\Facades\Http;
 class RfidController extends Controller
 {
     private RfidInterface $rfid;
+    private SchoolInterface $school;
 
-    public function __construct(RfidInterface $rfid) {
+    public function __construct(RfidInterface $rfid, SchoolInterface $school) {
         $this->rfid = $rfid;
+        $this->school = $school;
     }
 
     /**
@@ -38,15 +41,20 @@ class RfidController extends Controller
     public function create()
     {
         try {
-            $response = Http::get(config('api.check_rfid'));
+            $schools = $this->school->pluck_subdomain();
 
-            $data = $response->json();
-            $statusCode = $response->status();
+            foreach ($schools as $website) {
+                $apiUrl = $website . '/api/attendance/rfids';
+                $response = Http::get($apiUrl);
 
-            foreach ($data['data'] as $item) {
-                $this->rfid->updateUsed($item['rfid'], ['status' => RfidStatusEnum::USED->value]);
+                $data = $response->json();
+                $statusCode = $response->status();
+
+                foreach ($data['data'] as $item) {
+                    $this->rfid->updateUsed($item['rfid'], ['status' => RfidStatusEnum::USED->value]);
+                }
             }
-
+            
             return redirect()->back()->with('success', 'Berhasil refresh');
         } catch (\Throwable $th) {
             return redirect()->back()->with('warning', 'Tidak ada data');

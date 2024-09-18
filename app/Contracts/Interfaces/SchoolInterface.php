@@ -14,4 +14,5 @@ interface SchoolInterface extends GetInterface, StoreInterface, ShowWithSlugInte
 {
     public function where(mixed $data, Request $request): mixed;
     public function check_email(mixed $email): mixed;
+    public function pluck_subdomain(): mixed;
 }
