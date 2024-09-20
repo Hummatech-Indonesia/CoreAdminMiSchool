@@ -46,7 +46,7 @@ class RfidController extends Controller
             foreach ($schools as $website) {
                 $apiUrl = $website . '/api/attendance/rfids';
                 $response = Http::get($apiUrl);
-
+                if (!$response) continue;
                 $data = $response->json();
                 $statusCode = $response->status();
 
@@ -54,7 +54,7 @@ class RfidController extends Controller
                     $this->rfid->updateUsed($item['rfid'], ['status' => RfidStatusEnum::USED->value]);
                 }
             }
-            
+
             return redirect()->back()->with('success', 'Berhasil refresh');
         } catch (\Throwable $th) {
             return redirect()->back()->with('warning', 'Tidak ada data');
