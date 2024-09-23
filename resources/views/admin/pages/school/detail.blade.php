@@ -165,7 +165,7 @@
             </div>
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header bg-primary d-flex align-items-center">
@@ -185,17 +185,17 @@
                                 </div>
                                 <h5>RFID Aktif</h5>
                             </div>
-                            {{-- <div class="rfid-item mb-3 text-center">
+                            <div class="rfid-item mb-3 text-center">
                                 <div class="bg-light-danger text-danger d-inline-block px-4 py-4 fs-8 rounded fixed-size-div">
                                     <b>belum di fetch</b>
                                 </div>
                                 <h5>RFID Tidak Aktif</h5>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
 
