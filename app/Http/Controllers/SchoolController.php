@@ -66,22 +66,26 @@ class SchoolController extends Controller
     public function show($slug)
     {
         $school = $this->school->showWithSlug($slug);
-        $apiUrl = $school->website . '/api/school/detail/' . $slug;
-        $response = Http::get($apiUrl);
 
-        if ($response->successful()) {
-            $data = $response->json();
+        try {
+            $apiUrl = $school->website . '/api/school/detail/' . $slug;
+            $response = Http::get($apiUrl);
 
-            $teacher = $data['data']['teacher'];
-            $classroom = $data['data']['classroom'];
-            $extracurricular = $data['data']['extracurricular'];
-            $student = $data['data']['student'];
-            $rfid = $data['data']['rfid'];
-            $school_year = $data['data']['school_year'];
+            if ($response->successful()) {
+                $data = $response->json();
 
-            return view('admin.pages.school.detail', compact(
-                'school', 'teacher', 'classroom', 'extracurricular', 'student', 'rfid', 'school_year'));
-        } else {
+                $teacher = $data['data']['teacher'];
+                $classroom = $data['data']['classroom'];
+                $extracurricular = $data['data']['extracurricular'];
+                $student = $data['data']['student'];
+                $rfid = $data['data']['rfid'];
+                $school_year = $data['data']['school_year'];
+
+                return view('admin.pages.school.detail', compact(
+                    'school', 'teacher', 'classroom', 'extracurricular', 'student', 'rfid', 'school_year'));
+
+            }
+        } catch (\Throwable $th) {
 
             $teacher = '0';
             $classroom = '0';
