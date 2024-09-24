@@ -53,6 +53,13 @@ class RfidRepository extends BaseRepository implements RfidInterface
             ->update($data);
     }
 
+    public function updateAllNotUsed(array $rfids, array $data): mixed
+    {
+        return $this->model->query()
+            ->whereNotIn('rfid', $rfids)
+            ->update($data);
+    }
+
     public function delete(mixed $id): mixed
     {
         return $this->model->query()->findOrFail($id)->delete();
