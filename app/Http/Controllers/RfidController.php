@@ -50,13 +50,13 @@ class RfidController extends Controller
                 $data = $response->json();
                 $statusCode = $response->status();
 
-                $rfids = collect($data['data'])->pluck('rfid')->all();
+                // $rfids = collect($data['data'])->pluck('rfid')->all();
 
                 foreach ($data['data'] as $item) {
                     $this->rfid->updateUsed($item['rfid'], ['status' => RfidStatusEnum::USED->value]);
                 }
 
-                $this->rfid->updateAllNotUsed($rfids, ['status' => RfidStatusEnum::NOTUSED->value]);
+                // $this->rfid->updateAllNotUsed($rfids, ['status' => RfidStatusEnum::NOTUSED->value]);
             }
 
             return redirect()->back()->with('success', 'Berhasil refresh');
