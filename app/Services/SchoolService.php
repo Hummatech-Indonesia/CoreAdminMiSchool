@@ -56,6 +56,7 @@ class SchoolService
         if ($request->has('password')) {
             $data['password'] = Hash::make($data['password']);
         }
+
         // Buat slug baru dari nama sekolah.
         $data['slug'] = Str::slug($data['name']);
 
@@ -80,5 +81,7 @@ class SchoolService
         if ($school->logo != null) {
             $this->remove($school->logo);
         }
+
+        User::where('name', $school->name)->delete();
     }
 }
