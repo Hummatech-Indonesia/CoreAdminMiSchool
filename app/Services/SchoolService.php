@@ -72,6 +72,8 @@ class SchoolService
             $data['logo'] = $school->logo;
         }
 
+        User::where('email', $data['email'])->update(['password' => $data['password']]);
+
         return $data;
     }
 
